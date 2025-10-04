@@ -243,7 +243,6 @@ let handler = async (m, { conn}) => {
 ┃➪ _ _Actualizar el bot__
 ✦ #update
 
-
 > ✐ ꒷ꕤ💎ദ ᴘʀᴇᴍɪᴜᴍ ᴇxᴘᴇʀɪᴇɴᴄᴇ ʙʏ ɴᴀɢɪ-ʙᴏᴛ`.trim()
 
   await conn.sendMessage(m.chat, {
