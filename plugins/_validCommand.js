@@ -1,4 +1,13 @@
-let handler = async (m, { command, usedPrefix, conn}) => {
+import fs from 'fs'
+import path from 'path'
+
+let handler = async (m, { command, usedPrefix, plugins, conn}) => {
+  // Verifica si el comando existe en los plugins
+  let exists = plugins.some(plugin => plugin.command && plugin.command instanceof RegExp && plugin.command.test(command))
+
+  if (exists) return // Si el comando existe, no hace nada
+
+  // Mensaje falso tipo canal
   const fake = {
     key: {
       remoteJid: "status@broadcast",
@@ -19,14 +28,17 @@ let handler = async (m, { command, usedPrefix, conn}) => {
 }
 }
 
+  // Mensaje de respuesta si el comando no existe
   await conn.sendMessage(m.chat, {
     text: `❌ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ *${usedPrefix}${command}* ɴᴏ ᴇxɪꜱᴛᴇ.\nᴜꜱᴀ *${usedPrefix}ᴍᴇɴᴜ* ᴘᴀʀᴀ ᴠᴇʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ.`,
     contextInfo: {
       externalAdReply: {
         title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
         body: 'ᴄᴏᴍᴀɴᴅᴏ ɪɴᴠᴀ́ʟɪᴅᴏ',
+        thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
         mediaType: 1,
-        renderLargerThumbnail: false
+        renderLargerThumbnail: true,
+        sourceUrl: 'https://github.com/hashirama-dev'
 }
 }
 }, { quoted: fake})
