@@ -85,7 +85,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after
 
   // 🎴 Imagen portada
-  let imagen = 'https://cdn.yupra.my.id/yp/gabi1db7.jpg'
+  let imagen = 'https://cdn.yupra.my.id/yp/ks03er7o.jpg'
 
   // 📌 Contacto falso estilo "ping"
   let vcard = `BEGIN:VCARD
