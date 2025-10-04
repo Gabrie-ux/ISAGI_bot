@@ -1,5 +1,12 @@
-let handler = async (m, { conn}) => {
-  let menu = `
+import fetch from 'node-fetch'
+
+let handler = async (m, { conn, args }) => {
+let mentionedJid = await m.mentionedJid
+let userId = mentionedJid && mentionedJid[0] ? mentionedJid[0] : m.sender
+let totalreg = Object.keys(global.db.data.users).length
+let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length
+    
+let txt =  `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
 > ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ɴᴀɢɪ-ʙᴏᴛ, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
 
 ╭┈ ↷
@@ -234,26 +241,32 @@ let handler = async (m, { conn}) => {
 ╭─❒ ꕥ ɴᴀɢɪ-ʙᴏᴛᴠ𝟷 ꕥ
 │ ✐ 𝓓𝓮𝓼𝓲𝓰𝓷𝓮𝓭 𝓯𝓸𝓻 𝓔𝓵𝓲𝓽𝓮 𝓤𝓼𝓮𝓻𝓼 💎
 │ ✐ ꒷ꕤ💎ദ ᴘʀᴇᴍɪᴜᴍ ᴇxᴘᴇʀɪᴇɴᴄᴇ ʙʏ ɴᴀɢɪ-ʙᴏᴛ
-╰─────────────────
-`
-
-  await conn.sendMessage(m.chat, {
-    text: menu,
-    contextInfo: {
-      externalAdReply: {
-        title: 'ɴᴀɢɪ-ʙᴏᴛᴠ𝟷: ᴛᴜ ᴀꜱɪꜱᴛᴇɴᴛᴇ ᴀɴɪᴍᴇ ꜰᴀᴠᴏʀɪᴛᴏ',
-        body: '𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-𝒇𝒆𝒅𝒆𝒙𝒚𝒛 ❤️',
-        thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
-        mediaType: 1,
-        renderLargerThumbnail: true,
-        sourceUrl: 'https://github.com/hashirama-dev'
-}
-}
-}, { quoted: m})
+╰─────────────────`.trim()
+await conn.sendMessage(m.chat, { 
+text: txt,
+contextInfo: {
+mentionedJid: [userId],
+isForwarded: true,
+forwardedNewsletterMessageInfo: {
+newsletterJid: channelRD.id,
+serverMessageId: '',
+newsletterName: channelRD.name
+},
+externalAdReply: {
+title: botname,
+body: textbot,
+mediaType: 1,
+mediaUrl: redes,
+sourceUrl: redes,
+thumbnail: await (await fetch(banner)).buffer(),
+showAdAttribution: false,
+containsAutoReply: true,
+renderLargerThumbnail: true
+}}}, { quoted: m })
 }
 
 handler.help = ['menu']
 handler.tags = ['main']
-handler.command = ['menu']
+handler.command = ['menu', 'menú', 'help']
 
 export default handler
