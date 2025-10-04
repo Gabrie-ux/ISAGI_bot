@@ -17,9 +17,25 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx = "*VINCULACIÓN DE QR EXPIRA EN 45 SEGUNDOS 🌀*"
-let rtx2 = "*𝖯𝖠𝖲𝖮𝖲 𝖯𝖠𝖱𝖠 𝖵𝖨𝖭𝖢𝖴𝖫𝖠𝖢𝖨𝖮́𝖭*\n\n> 𝟣 : 𝖧𝖠𝖦𝖠 𝖢𝖫𝖨𝖢𝖪 𝖤𝖭 𝖫𝖮𝖲 𝟥 𝖯𝖴𝖭𝖳𝖮𝖲 𝖠𝖫𝖠 𝖤𝖲𝖰𝖴𝖨𝖭𝖠 𝖲𝖴𝖯𝖤𝖱𝖨𝖮𝖱  𝖣𝖤𝖱𝖤𝖢𝖧𝖠\n\n> 𝟤 : 𝖳𝖮𝖢𝖠 𝖤𝖭 *𝖣𝖨𝖲𝖯𝖮𝖲𝖨𝖳𝖨𝖵𝖮𝖲 𝖵𝖨́𝖭𝖢𝖴𝖫𝖠𝖣𝖮𝖲\n\n> 𝟥 : 𝖲𝖤𝖫𝖤𝖢𝖢𝖨𝖮́𝖭𝖠 *𝖵𝖨𝖭𝖢𝖴𝖫𝖠𝖱 𝖢𝖮𝖭 𝖭𝖴𝖬𝖤𝖱𝖮 𝖣𝖤 𝖳𝖤𝖫𝖤́𝖥𝖮𝖭𝖮\n\n> 𝟦 : 𝖤𝖲𝖢𝖱𝖨𝖡𝖠 𝖤𝖫 𝖢𝖮𝖣𝖨𝖦𝖮 𝖯𝖠𝖱𝖠 𝖨𝖭𝖨𝖢𝖨𝖠𝖱 𝖲𝖤𝖲𝖨𝖮́𝖭 𝖢𝖮𝖭 𝖤𝖫 𝖡𝖮𝖳\n\n\`ADVERTENCIA, NO RECOMIENDO USAR EL NÚMERO PRINCIPAL 💭\`\n\n*📌CANAL https://whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N 📥*"
+let rtx = `
+*╭─❒ SUB BOT - VINCULACIÓN POR QR*
+*│ ꕥ PASOS PARA VINCULAR:*
+*│ ➪ 1:* Toca los tres puntos (⋮) en la esquina superior derecha
+*│ ➪ 2:* Selecciona *Dispositivos vinculados*
+*│ ➪ 3:* Presiona *Vincular un dispositivo*
+*│ ➪ 4:* Escanea el código QR que aparece aquí
+*╰─❒ AVISO:* Este código QR expira en *45 segundos* y solo funciona en el número que lo solicitó.`
 
+let rtx2 = `
+*╭─❒ SUB BOT - VINCULACIÓN POR CÓDIGO*
+*│ ꕥ PASOS PARA VINCULAR:*
+*│ ➪ 1:* Toca los tres puntos (⋮) en la esquina superior derecha
+*│ ➪ 2:* Selecciona *Dispositivos vinculados*
+*│ ➪ 3:* Presiona *Vincular con el número de teléfono*
+*│ ➪ 4:* Ingresa el código de 8 dígitos proporcionado
+*╰─❒ AVISO:* Este código solo funciona en el número que lo solicitó.
+
+📌 𝚂𝚒𝚐𝚞𝚎 𝚎𝚕 𝚌𝚊𝚗𝚊𝚕: https://whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N`
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const ItachiJBOptions = {}
