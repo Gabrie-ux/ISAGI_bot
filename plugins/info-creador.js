@@ -19,7 +19,7 @@ FN:☕ ˚ᴅ ᴇ ᴠ - ꜰ ᴇ ᴅ ᴇ x ʏ ᴢ・୧
 ORG:☕ ˚ᴅ ᴇ ᴠ - ꜰ ᴇ ᴅ ᴇ x ʏ ᴢ・୧
 TITLE:Dev & Co-Founder of Nagi-Bot
 EMAIL;type=INTERNET:hashirama.dev@gmail.com
-TEL;type=CELL;waid=5491156178758:+5491156178758
+TEL;type=CELL;waid=5491137612743:+5491137612743
 ADR;type=WORK:;;Tokyo-to;HashiDev;Tokyo;100-0001;Japan
 URL;type=WORK:https://github.com/hashirama-dev
 X-WA-BIZ-NAME:𝑯𝒂𝒔𝒉𝒊𝒓𝒂𝒎𝒂 𝑫𝒆𝒗
