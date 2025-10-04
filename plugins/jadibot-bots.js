@@ -37,8 +37,7 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
 ❏ Bots en este grupo: *${botsInGroup.length}*
 
 ${botListText}
-
-_𝑵𝒂𝒈𝒊-𝑩𝒐𝒕_`
+> © 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖬𝗈𝗈𝗇𝖿𝗋𝖺𝗋𝖾 𝗍𝖾𝖺𝗆 ☽*`
 
     const mentions = botsInGroup.map(bot => bot.jid.endsWith('@s.whatsapp.net')? bot.jid: `${bot.jid}@s.whatsapp.net`)
     await conn.sendMessage(m.chat, { text: message, mentions}, { quoted: m})
