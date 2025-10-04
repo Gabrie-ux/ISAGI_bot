@@ -59,7 +59,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ꕥ ᴜsᴜᴀʀɪᴏs: ${totalreg}
 ꕥ ᴘʟᴀᴛᴀꜰᴏʀᴍᴀ: ʟɪɴᴜx
 
-*ꜱɪ ᴇɴᴄᴜᴇɴᴛʀᴀꜱ ᴀʟɢᴜ́ɴ ᴇʀʀᴏʀ, ᴘᴏʀ ꜰᴀᴠᴏʀ ᴄᴏɴᴛᴀᴄᴛᴀ ᴀʟ ᴏᴡɴᴇʀ.*
+> *_ꜱɪ ᴇɴᴄᴜᴇɴᴛʀᴀꜱ ᴀʟɢᴜ́ɴ ᴇʀʀᴏʀ, ᴘᴏʀ ꜰᴀᴠᴏʀ ᴄᴏɴᴛᴀᴄᴛᴀ ᴀʟ ᴏᴡɴᴇʀ._*
 `.trim()
 
   // 📜 Lista de comandos organizados
