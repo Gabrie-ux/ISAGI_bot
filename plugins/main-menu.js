@@ -114,7 +114,7 @@ END:VCARD`
   await conn.sendMessage(m.chat, {
     document: fs.readFileSync('./package.json'),
     fileName: '⚽ 𝑵𝒂𝒈𝒊-𝑩𝒐𝒕 ⚽',
-    mimetype: 'application/pdf',
+    mimetype: 'application/zip',
     caption: finalMenu,
     contextInfo: {
       externalAdReply: {
@@ -123,9 +123,12 @@ END:VCARD`
         thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: true
-      }
-    }
-  }, { quoted: qkontak }) // 👈 aquí la adaptación
+}
+}
+}, { quoted: qkontak})
+
+  // ⚽️ Reacción al mensaje
+  await m.react('⚽️')
 
   await delay(400)
 }
