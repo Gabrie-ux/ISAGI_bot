@@ -36,8 +36,8 @@ END:VCARD`;
                     name: "cta_url",
                     buttonParamsJson: JSON.stringify({
                         display_text: "🌐 Repositorio de GitHub",
-                        url: "https://github.com/El-brayan502/NagiBotV3",
-                        merchant_url: "https://github.com/El-brayan502/NagiBotV3",
+                        url: "https://github.com/Dev-fedexyz17502/Nagi-Bot",
+                        merchant_url: "https://github.com/Dev-fedexyz17502/Nagi-Bot",
                     }),
                 },
                 {
