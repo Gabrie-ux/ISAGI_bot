@@ -34,7 +34,7 @@ contextInfo: {
 externalAdReply: {
 title: 'Copyright © 2022 - 2025 Nagi-Bot',
 body: 'Contacta directamente por WhatsApp',
-thumbnailUrl: 'https://cdn.yupra.my.id/yp/ykhrquj7.jpg',
+thumbnailUrl: 'https://cdn.yupra.my.id/yp/bi3v6zn3.jpg',
 mediaType: 1,
 renderLargerThumbnail: true
 }
