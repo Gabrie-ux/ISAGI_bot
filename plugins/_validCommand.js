@@ -1,16 +1,23 @@
 import fs from 'fs'
-import path from 'path'
 
 let handler = async (m, { command, usedPrefix, plugins, conn}) => {
-  
-  const isValidCommand = Array.isArray(plugins) &&
-    plugins.some(plugin =>
-      plugin.command &&
-      plugin.command instanceof RegExp &&
-      plugin.command.test(command)
-)
 
-  if (isValidCommand) return
+  const comandoBuscado = usedPrefix + command
+  const existe = Array.isArray(plugins) && plugins.some(plugin => {
+    if (!plugin.command) return false
+
+    if (plugin.command instanceof RegExp) {
+      return plugin.command.test(command)
+}
+
+    if (Array.isArray(plugin.command)) {
+      return plugin.command.includes(command)
+}
+
+    return plugin.command === command
+})
+
+  if (existe) return
 
   const fake = {
     key: {
@@ -32,9 +39,8 @@ let handler = async (m, { command, usedPrefix, plugins, conn}) => {
 }
 }
 
-  // ❌ Respuesta si el comando no existe
   await conn.sendMessage(m.chat, {
-    text: `❌ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ *${usedPrefix}${command}* ɴᴏ ᴇxɪꜱᴛᴇ.\nᴜꜱᴀ *${usedPrefix}ᴍᴇɴᴜ* ᴘᴀʀᴀ ᴠᴇʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ.`,
+    text: `❌ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ *${comandoBuscado}* ɴᴏ ᴇxɪꜱᴛᴇ.\nᴜꜱᴀ *${usedPrefix}ᴍᴇɴᴜ* ᴘᴀʀᴀ ᴠᴇʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ.`,
     contextInfo: {
       externalAdReply: {
         title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
@@ -47,7 +53,7 @@ let handler = async (m, { command, usedPrefix, plugins, conn}) => {
 }
 }, { quoted: fake})
 
-  await m.react('👻')
+  await m.react('❌')
 }
 
 export default handler
