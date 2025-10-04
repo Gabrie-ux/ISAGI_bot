@@ -5,47 +5,25 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
     const allConnections = [global.conn,...global.conns]
     const activeBots = allConnections
 .filter(c => c.user && c.ws?.socket?.readyState!== ws.CLOSED)
-.map(c => ({ jid: c.user.jid, uptime: c.uptime}))
-
-    const formatUptime = (ms) => {
-      const seg = Math.floor(ms / 1000) % 60
-      const min = Math.floor(ms / (1000 * 60)) % 60
-      const hrs = Math.floor(ms / (1000 * 60 * 60)) % 24
-      const days = Math.floor(ms / (1000 * 60 * 60 * 24))
-      return `${days? `${days} ᴅíᴀꜱ, `: ''}${hrs? `${hrs} ʜᴏʀᴀꜱ, `: ''}${min? `${min} ᴍɪɴᴜᴛᴏꜱ, `: ''}${seg? `${seg} ꜱᴇɢᴜɴᴅᴏꜱ`: ''}`.trim()
-}
 
     const botsInGroup = activeBots.filter(bot => participants.some(p => p.id === bot.jid))
     if (!botsInGroup.some(bot => bot.jid === global.conn.user.jid)) {
-      botsInGroup.push({ jid: global.conn.user.jid, uptime: global.conn.uptime})
+      botsInGroup.push({ jid: global.conn.user.jid})
 }
 
-    let botListText = ''
-    if (activeBots.length - 1>= 10) {
-      botListText = '❌ ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ᴍᴀ́s ꜱᴜʙʙᴏᴛꜱ.'
-} else {
-      botListText = botsInGroup.length
-? botsInGroup.map(bot => {
-            const isMain = bot.jid === global.conn.user.jid
-            const mention = bot.jid.replace(/[^0-9]/g, '')
-            const uptime = bot.uptime? formatUptime(Date.now() - bot.uptime): 'ᴀᴄᴛɪᴠᴏ ᴅᴇꜱᴅᴇ ᴀʜᴏʀᴀ'
-            return `@${mention}\n✦ ᴛɪᴘᴏ: ${isMain? '*ᴘʀɪɴᴄɪᴘᴀʟ*': '*ꜱᴜʙ-ʙᴏᴛ*'}\n✦ ᴛɪᴇᴍᴘᴏ ᴀᴄᴛɪᴠᴏ: ${uptime}`
-}).join('\n\n')
-: '✧ ɴᴏ ʜᴀʏ ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ.'
-}
+    const subBotsCount = activeBots.length - 1
+    const botListText = subBotsCount>= 10
+? '> ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ᴍᴀ́s ꜱᴜʙʙᴏᴛꜱ.'
+: `🤖 ꜱᴜʙ-ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ: *${subBotsCount}*`
 
     const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
 
 ⚽ ʙᴏᴛ ᴘʀɪɴᴄɪᴘᴀʟ: *1*
-🤖 ꜱᴜʙ-ʙᴏᴛꜱ: *${activeBots.length - 1>= 10? 'ᴍᴜᴄʜᴏꜱ': activeBots.length - 1}*
+${botListText}
 
 ❏ ʙᴏᴛꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ: *${botsInGroup.length}*
 
-${botListText}
-
 > © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴғʀᴀʀᴇ ᴛᴇᴀᴍ ☽`
-
-    const mentions = botsInGroup.map(bot => bot.jid.endsWith('@s.whatsapp.net')? bot.jid: `${bot.jid}@s.whatsapp.net`)
 
     await conn.sendMessage(m.chat, {
       text: message,
@@ -58,8 +36,7 @@ ${botListText}
           renderLargerThumbnail: true,
           sourceUrl: 'https://github.com/hashirama-dev'
 }
-},
-      mentions
+}
 }, { quoted: m})
 
 } catch (error) {
