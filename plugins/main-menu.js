@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn}) => {
-  const botname = '© ＮＡＧＩＢＯＴ－Ｖ'
-  const textbot = 'ꕥ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ'
+  const botname = 'ＮＡＧＩＢＯＴ－Ｖ'
+  const textbot = 'ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ'
   const redes = 'https://github.com/Dev-fedexyz17'
   const banner = 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg'
   const channelRD = {
