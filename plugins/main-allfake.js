@@ -106,7 +106,7 @@ global.rcanal = {
       newsletterName: channelRD.name,
     },
     externalAdReply: {
-      title: '𝙉𝙖𝙜𝙞𝘽𝙤𝙩-𝙈𝘿 : 𝘿𝙚𝙫 𝙃𝙖𝙨𝙝𝙞𝙧𝙖𝙢𝙖',
+      title: '𝑵𝒂𝒈𝒊-𝑩𝒐𝒕𝑽𝟏: 𝑫𝒆𝒗-𝒉𝒂𝒔𝒉𝒊𝒓𝒂𝒎𝒂',
       body: '',
       mediaUrl: null,
       description: null,
@@ -148,7 +148,7 @@ global.rcanalw = {
       newsletterName: channelRD.name,
     },
     externalAdReply: {
-      title: 'ɪᴛᴀᴄʜɪ ʙᴏᴛ Bʏ ᴍᴀʀᴄᴋ',
+      title: 'ɴᴀɢɪ-ʙᴏᴛ Bʏ ᴍᴀʀᴄᴋ',
       body: '',
       mediaUrl: null,
       description: null,
