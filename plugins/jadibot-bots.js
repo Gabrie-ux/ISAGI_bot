@@ -20,19 +20,24 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
       botsInGroup.push({ jid: global.conn.user.jid, uptime: global.conn.uptime})
 }
 
-    const botListText = botsInGroup.length
+    let botListText = ''
+    if (activeBots.length - 1>= 10) {
+      botListText = '❌ ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ᴍᴀ́s ꜱᴜʙʙᴏᴛꜱ.'
+} else {
+      botListText = botsInGroup.length
 ? botsInGroup.map(bot => {
-          const isMain = bot.jid === global.conn.user.jid
-          const mention = bot.jid.replace(/[^0-9]/g, '')
-          const uptime = bot.uptime? formatUptime(Date.now() - bot.uptime): 'ᴀᴄᴛɪᴠᴏ ᴅᴇꜱᴅᴇ ᴀʜᴏʀᴀ'
-          return `@${mention}\n✦ ᴛɪᴘᴏ: ${isMain? '*ᴘʀɪɴᴄɪᴘᴀʟ*': '*ꜱᴜʙ-ʙᴏᴛ*'}\n✦ ᴛɪᴇᴍᴘᴏ ᴀᴄᴛɪᴠᴏ: ${uptime}`
+            const isMain = bot.jid === global.conn.user.jid
+            const mention = bot.jid.replace(/[^0-9]/g, '')
+            const uptime = bot.uptime? formatUptime(Date.now() - bot.uptime): 'ᴀᴄᴛɪᴠᴏ ᴅᴇꜱᴅᴇ ᴀʜᴏʀᴀ'
+            return `@${mention}\n✦ ᴛɪᴘᴏ: ${isMain? '*ᴘʀɪɴᴄɪᴘᴀʟ*': '*ꜱᴜʙ-ʙᴏᴛ*'}\n✦ ᴛɪᴇᴍᴘᴏ ᴀᴄᴛɪᴠᴏ: ${uptime}`
 }).join('\n\n')
 : '✧ ɴᴏ ʜᴀʏ ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ.'
+}
 
     const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
 
 ⚽ ʙᴏᴛ ᴘʀɪɴᴄɪᴘᴀʟ: *1*
-🤖 ꜱᴜʙ-ʙᴏᴛꜱ: *${activeBots.length - 1}*
+🤖 ꜱᴜʙ-ʙᴏᴛꜱ: *${activeBots.length - 1>= 10? 'ᴍᴜᴄʜᴏꜱ': activeBots.length - 1}*
 
 ❏ ʙᴏᴛꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ: *${botsInGroup.length}*
 
