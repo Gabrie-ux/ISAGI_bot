@@ -24,7 +24,7 @@ global.prems = ['573001533523', '50231458537']
 
 //✎﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 
-global.packname = '𝑵𝒂𝒈𝒊-𝑩𝒐𝒕𝑽𝟏: 𝑫𝒆𝒗-𝒉𝒂𝒔𝒉𝒊𝒓𝒂𝒎𝒂'
+global.packname = '𝑵𝒂𝒈𝒊-𝑩𝒐𝒕𝑽𝟏: 𝑫𝒆𝒗-𝒇𝒆𝒅𝒆𝒙𝒚𝒛'
 global.botname = '𝖭𝖺𝗀𝗂𝖡𝗈𝗍-𝖠𝖨'
 global.textbot = 'N A G I - A I'
 global.author = '𝑁𝑎𝑔𝑖𝐵𝑜𝑡-𝑀𝐷 𝐵𝑦 𝐻𝑎𝑠ℎ𝑖𝑟𝑎𝑚𝑎 𝑆𝑒𝑛𝑗𝑢'
