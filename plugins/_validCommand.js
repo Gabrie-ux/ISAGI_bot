@@ -2,12 +2,16 @@ import fs from 'fs'
 import path from 'path'
 
 let handler = async (m, { command, usedPrefix, plugins, conn}) => {
-  // Verifica si el comando existe en los plugins
-  let exists = plugins.some(plugin => plugin.command && plugin.command instanceof RegExp && plugin.command.test(command))
+  
+  const isValidCommand = Array.isArray(plugins) &&
+    plugins.some(plugin =>
+      plugin.command &&
+      plugin.command instanceof RegExp &&
+      plugin.command.test(command)
+)
 
-  if (exists) return // Si el comando existe, no hace nada
+  if (isValidCommand) return
 
-  // Mensaje falso tipo canal
   const fake = {
     key: {
       remoteJid: "status@broadcast",
@@ -28,7 +32,7 @@ let handler = async (m, { command, usedPrefix, plugins, conn}) => {
 }
 }
 
-  // Mensaje de respuesta si el comando no existe
+  // ❌ Respuesta si el comando no existe
   await conn.sendMessage(m.chat, {
     text: `❌ ᴇʟ ᴄᴏᴍᴀɴᴅᴏ *${usedPrefix}${command}* ɴᴏ ᴇxɪꜱᴛᴇ.\nᴜꜱᴀ *${usedPrefix}ᴍᴇɴᴜ* ᴘᴀʀᴀ ᴠᴇʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ.`,
     contextInfo: {
@@ -42,11 +46,8 @@ let handler = async (m, { command, usedPrefix, plugins, conn}) => {
 }
 }
 }, { quoted: fake})
-}
 
-handler.command = /^.*/
-handler.customPrefix = /^.*/
-handler.fail = null
-handler.exp = 0
+  await m.react('👻')
+}
 
 export default handler
