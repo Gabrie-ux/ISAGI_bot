@@ -41,7 +41,21 @@ ${botListText}
 > © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴғʀᴀʀᴇ ᴛᴇᴀᴍ ☽`
 
     const mentions = botsInGroup.map(bot => bot.jid.endsWith('@s.whatsapp.net')? bot.jid: `${bot.jid}@s.whatsapp.net`)
-    await conn.sendMessage(m.chat, { text: message, mentions}, { quoted: m})
+
+    await conn.sendMessage(m.chat, {
+      text: message,
+      contextInfo: {
+        externalAdReply: {
+          title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
+          body: 'ʟɪsᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ',
+          thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
+          mediaType: 1,
+          renderLargerThumbnail: true,
+          sourceUrl: 'https://github.com/hashirama-dev'
+}
+},
+      mentions
+}, { quoted: m})
 
 } catch (error) {
     m.reply(`⚠︎ ꜱᴇ ʜᴀ ᴘʀᴏᴅᴜᴄɪᴅᴏ ᴜɴ ᴇʀʀᴏʀ.\n> ᴜꜱᴀ *${usedPrefix}report* ᴘᴀʀᴀ ɪɴꜰᴏʀᴍᴀʀʟᴏ.\n\n${error.message}`)
