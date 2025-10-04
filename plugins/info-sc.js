@@ -23,9 +23,9 @@ END:VCARD`;
     await conn.sendMessage(
         m.chat,
         {
-            image: { url: "https://cdn.yupra.my.id/yp/5u9fz57s.jpg" },
+            image: { url: "https://cdn.yupra.my.id/yp/6sw4yju9.jpg" },
             caption:
-                "🍙 *Proyecto Script Marck* 🍙\n" +
+                "⚽ *Proyecto Script Marck* 🍙\n" +
                 "📂 *Repositorio: Código fuente oficial de Nagi*\n" +
                 "✨ *¡No olvides dejar una ⭐ en el repo si te gusta!*",
             title: "🍡 Nagi — Bot de WhatsApp",
