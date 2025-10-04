@@ -49,10 +49,10 @@ global.done = '✅'
 global.error = '✖️'
 global.msm = '⚠️︎'
 
-global.emoji = '*(눈‸눈) 🎋*'
+global.emoji = '*(≧▽≦) 🎋*'
 global.emoji2 = '*(✿╹◡╹)ﾉ ❤️*'
 global.emoji3 = '*ദ്ദി ᵔ ᴗ ᵔ ) 🎄*'
-global.emoji4 = '*(ﾉಥ益ಥ)ﾉ ✨️*'
+global.emoji4 = '*(＠＾◡＾) ✨️*'
 global.emoji5 = '*∑(;°Д°) ☃️*'
 global.emojis = [emoji, emoji2, emoji3, emoji4].getRandom()
 
