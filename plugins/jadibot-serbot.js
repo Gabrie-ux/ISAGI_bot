@@ -18,24 +18,22 @@ let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
 let rtx = `
-*╭─❒ SUB BOT - VINCULACIÓN POR QR*
-*│ ꕥ PASOS PARA VINCULAR:*
-*│ ➪ 1:* Toca los tres puntos (⋮) en la esquina superior derecha
-*│ ➪ 2:* Selecciona *Dispositivos vinculados*
-*│ ➪ 3:* Presiona *Vincular un dispositivo*
-*│ ➪ 4:* Escanea el código QR que aparece aquí
-*╰─❒ AVISO:* Este código QR expira en *45 segundos* y solo funciona en el número que lo solicitó.`
+*╭─❒ ꜱᴜʙ-ʙᴏᴛ - ᴠɪɴᴄᴜʟᴀᴄɪᴏ́ɴ ᴘᴏʀ ǫʀ*
+*│ ꕥ ᴘᴀꜱᴏꜱ ᴘᴀʀᴀ ᴠɪɴᴄᴜʟᴀʀ:*
+*│ ➪ 1:* ᴛᴏᴄᴀ ʟᴏꜱ ᴛʀᴇꜱ ᴘᴜɴᴛᴏꜱ (⋮) ᴇɴ ʟᴀ ᴇꜱQᴜɪɴᴀ ꜱᴜᴘᴇʀɪᴏʀ ᴅᴇʀᴇᴄʜᴀ
+*│ ➪ 2:* ꜱᴇʟᴇᴄᴄɪᴏɴᴀ *ᴅɪꜱᴘᴏꜱɪᴛɪᴠᴏꜱ ᴠɪɴᴄᴜʟᴀᴅᴏꜱ*
+*│ ➪ 3:* ᴘʀᴇꜱɪᴏɴᴀ *ᴠɪɴᴄᴜʟᴀʀ ᴜɴ ᴅɪꜱᴘᴏꜱɪᴛɪᴠᴏ*
+*│ ➪ 4:* ᴇꜱᴄᴀɴᴇᴀ ᴇʟ ᴄᴏ́ᴅɪɢᴏ ǫʀ ǫᴜᴇ ᴀᴘᴀʀᴇᴄᴇ ᴀQᴜɪ́
+*╰─❒ ᴀᴠɪꜱᴏ:* ᴇꜱᴛᴇ ᴄᴏ́ᴅɪɢᴏ ǫʀ ᴇxᴘɪʀᴀ ᴇɴ *45 ꜱᴇɢᴜɴᴅᴏꜱ* ʏ ꜱᴏʟᴏ ꜰᴜɴᴄɪᴏɴᴀ ᴇɴ ᴇʟ ɴᴜ́ᴍᴇʀᴏ ǫᴜᴇ ʟᴏ ꜱᴏʟɪᴄɪᴛᴏ́.`
 
 let rtx2 = `
-*╭─❒ SUB BOT - VINCULACIÓN POR CÓDIGO*
-*│ ꕥ PASOS PARA VINCULAR:*
-*│ ➪ 1:* Toca los tres puntos (⋮) en la esquina superior derecha
-*│ ➪ 2:* Selecciona *Dispositivos vinculados*
-*│ ➪ 3:* Presiona *Vincular con el número de teléfono*
-*│ ➪ 4:* Ingresa el código de 8 dígitos proporcionado
-*╰─❒ AVISO:* Este código solo funciona en el número que lo solicitó.
-
-📌 𝚂𝚒𝚐𝚞𝚎 𝚎𝚕 𝚌𝚊𝚗𝚊𝚕: https://whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N`
+*╭─❒ ꜱᴜʙ-ʙᴏᴛ - ᴠɪɴᴄᴜʟᴀᴄɪᴏ́ɴ ᴘᴏʀ ᴄᴏ́ᴅɪɢᴏ*
+*│ ꕥ ᴘᴀꜱᴏꜱ ᴘᴀʀᴀ ᴠɪɴᴄᴜʟᴀʀ:*
+*│ ➪ 1:* ᴛᴏᴄᴀ ʟᴏꜱ ᴛʀᴇꜱ ᴘᴜɴᴛᴏꜱ (⋮) ᴇɴ ʟᴀ ᴇꜱQᴜɪɴᴀ ꜱᴜᴘᴇʀɪᴏʀ ᴅᴇʀᴇᴄʜᴀ
+*│ ➪ 2:* ꜱᴇʟᴇᴄᴄɪᴏɴᴀ *ᴅɪꜱᴘᴏꜱɪᴛɪᴠᴏꜱ ᴠɪɴᴄᴜʟᴀᴅᴏꜱ*
+*│ ➪ 3:* ᴘʀᴇꜱɪᴏɴᴀ *ᴠɪɴᴄᴜʟᴀʀ ᴄᴏɴ ᴇʟ ɴᴜ́ᴍᴇʀᴏ ᴅᴇ ᴛᴇʟᴇ́ꜰᴏɴᴏ*
+*│ ➪ 4:* ɪɴɢʀᴇꜱᴀ ᴇʟ ᴄᴏ́ᴅɪɢᴏ ᴅᴇ 8 ᴅɪ́ɢɪᴛᴏꜱ ᴘʀᴏᴘᴏʀᴄɪᴏɴᴀᴅᴏ
+*╰─❒ ᴀᴠɪꜱᴏ:* ᴇꜱᴛᴇ ᴄᴏ́ᴅɪɢᴏ ꜱᴏʟᴏ ꜰᴜɴᴄɪᴏɴᴀ ᴇɴ ᴇʟ ɴᴜ́ᴍᴇʀᴏ ǫᴜᴇ ʟᴏ ꜱᴏʟɪᴄɪᴛᴏ́.`
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const ItachiJBOptions = {}
