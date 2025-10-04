@@ -7,7 +7,7 @@ let handler = async (m, { conn}) => {
   const banner = 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg'
   const channelRD = {
     id: '120363423335018677@newsletter1',
-    name: '© ＮＡＧＩＢＯＴ－Ｖ¹'
+    name: 'ＮＡＧＩＢＯＴ－Ｖ¹'
 }
 
   const userId = m.mentionedJid?.[0] || m.sender
