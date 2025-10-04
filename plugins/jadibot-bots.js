@@ -3,8 +3,7 @@ import ws from "ws"
 const handler = async (m, { conn, command, usedPrefix, participants}) => {
   try {
     const allConnections = [global.conn,...global.conns]
-    const activeBots = allConnections
-.filter(c => c.user && c.ws?.socket?.readyState!== ws.CLOSED)
+    const activeBots = allConnections.filter(c => c.user && c.ws?.socket?.readyState!== ws.CLOSED)
 
     const botsInGroup = activeBots.filter(bot => participants.some(p => p.id === bot.jid))
     if (!botsInGroup.some(bot => bot.jid === global.conn.user.jid)) {
@@ -12,16 +11,16 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
 }
 
     const subBotsCount = activeBots.length - 1
-    const botListText = subBotsCount>= 10
-? '> ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ᴍᴀ́s ꜱᴜʙʙᴏᴛꜱ.'
+    const subBotDisplay = subBotsCount>= 10
+? '❌ ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ.'
 : `🤖 ꜱᴜʙ-ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ: *${subBotsCount}*`
 
     const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
 
 ⚽ ʙᴏᴛ ᴘʀɪɴᴄɪᴘᴀʟ: *1*
-${botListText}
 
 ❏ ʙᴏᴛꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ: *${botsInGroup.length}*
+${subBotDisplay}
 
 > © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴғʀᴀʀᴇ ᴛᴇᴀᴍ ☽`
 
@@ -29,8 +28,8 @@ ${botListText}
       text: message,
       contextInfo: {
         externalAdReply: {
-          title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
-          body: 'ʟɪsᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ',
+          title: 'Nagi-BotV1',
+          body: 'lista de subbots activos',
           thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
           mediaType: 1,
           renderLargerThumbnail: true,
