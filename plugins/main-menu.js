@@ -24,8 +24,8 @@ let handler = async (m, { conn, usedPrefix }) => {
   }
 
   // 📑 Estilos
-  let header = '*– %category*'
-  let body = '┃⋆˚⚽˖° %cmd'
+  let header = '*❒ %category*'
+  let body = '┃➪ %cmd'
   let footer = ''
   let after = `⚽ Nagi-Bot - Tu asistente anime favorito`
 
