@@ -15,8 +15,8 @@ END:VCARD`
 
 let vcard2 = `BEGIN:VCARD
 VERSION:3.0
-FN:✨ ˚₊ ʜ ᴀ ꜱ ʜ ɪ ʀ ᴀ ᴍ ᴀ・୧
-ORG:✨ ˚₊ ʜ ᴀ ꜱ ʜ ɪ ʀ ᴀ ᴍ ᴀ・୧
+FN:☕ ˚ᴅ ᴇ ᴠ - ꜰ ᴇ ᴅ ᴇ x ʏ ᴢ・୧
+ORG:☕ ˚ᴅ ᴇ ᴠ - ꜰ ᴇ ᴅ ᴇ x ʏ ᴢ・୧
 TITLE:Dev & Co-Founder of Nagi-Bot
 EMAIL;type=INTERNET:hashirama.dev@gmail.com
 TEL;type=CELL;waid=5491156178758:+5491156178758
