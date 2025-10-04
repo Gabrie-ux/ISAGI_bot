@@ -27,7 +27,8 @@ let handler = async (m, { conn}) => {
 »  ⊹ ˚୨ •(=^●ω●^=)•  INFO ⊹
 > ✐ Comandos de información general.
 
-┃➪ Muestra el menú completo del bot ✦ *#menu*
+┃➪ Muestra el menú completo del bot 
+✦ *#menu* • *#help*
 ┃➪ Información y contacto del creador 
 ✦ *#owner*
 ┃➪ Verifica si el bot está activo 
@@ -98,67 +99,104 @@ let handler = async (m, { conn}) => {
 ✦ *#yta* <url>
 ┃➪ Convierte video a MP3 
 ✦ *#ytmp3* <url>
-┃➪ Alternativa para reproducir música ✦ *#play2* <texto>
-┃➪ Descarga video de YouTube ✦ *#ytv* <url>
-┃➪ Convierte video a MP4 ✦ *#ytmp4* <url>
-┃➪ Reproduce audio directamente ✦ *#playaudio* <texto>
-┃➪ Descarga en formato MP4 ✦ *#mp4* <url>
-┃➪ Descarga desde TikTok ✦ *#tiktok* <url>
+┃➪ Alternativa para reproducir música 
+✦ *#play2* <texto>
+┃➪ Descarga video de YouTube 
+✦ *#ytv* <url>
+┃➪ Convierte video a MP4 
+✦ *#ytmp4* <url>
+┃➪ Reproduce audio directamente 
+✦ *#playaudio* <texto>
+┃➪ Descarga en formato MP4 
+✦ *#mp4* <url>
+┃➪ Descarga desde TikTok 
+✦ *#tiktok* <url>
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  FUN ⊹
 > ✐ Comandos para divertirte con el grupo.
 
-┃➪ Doxeo aleatorio ✦ *#doxear*
-┃➪ Doxeo personalizado ✦ *#doxxing* <nombre> | <@mención>
-┃➪ Forma parejas aleatorias ✦ *#formarpareja*
-┃➪ Crea parejas múltiples ✦ *#formarpareja5*
-┃➪ Lanza un huevo a alguien ✦ *#huevo* <@mención>
-┃➪ Comando divertido ✦ *#chaqueta*
-┃➪ Crea un ranking personalizado ✦ *#top* <texto>
+┃➪ Doxeo aleatorio 
+✦ *#doxear*
+┃➪ Doxeo personalizado 
+✦ *#doxxing* <nombre> | <@mención>
+┃➪ Forma parejas aleatorias 
+✦ *#formarpareja*
+┃➪ Crea parejas múltiples 
+✦ *#formarpareja5*
+┃➪ Lanza un huevo a alguien 
+✦ *#huevo* <@mención>
+┃➪ Comando divertido 
+✦ *#chaqueta*
+┃➪ Crea un ranking personalizado 
+✦ *#top* <texto>
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  GRUPO ⊹
 > ✐ Comandos para administrar el grupo.
 
-┃➪ Abre o cierra el grupo ✦ *#group* open / close
-┃➪ Alternativa para abrir/cerrar ✦ *#grupo* abrir / cerrar
-┃➪ Elimina un mensaje ✦ *#delete* <responder>
-┃➪ Menciona sin mostrar usuarios ✦ *#hidetag* <texto>
-┃➪ Expulsa a un miembro ✦ *#kick* <@mención>
-┃➪ Muestra el ID del grupo ✦ *#lid*
-┃➪ Obtiene el enlace del grupo ✦ *#link*
-┃➪ Asciende a administrador ✦ *#promote* <@mención>
-┃➪ Menciona a los admins ✦ *#tagadmin*
-┃➪ Menciona a todos ✦ *#tagall*
-┃➪ Mención con texto personalizado ✦ *#tagtext* <texto>
-┃➪ Llama a los subbots ✦ *#invocar*
+┃➪ Abre o cierra el grupo 
+✦ *#group* open / close
+┃➪ Alternativa para abrir/cerrar 
+✦ *#grupo* abrir / cerrar
+┃➪ Elimina un mensaje 
+✦ *#delete* <responder>
+┃➪ Menciona sin mostrar usuarios 
+✦ *#hidetag* <texto>
+┃➪ Expulsa a un miembro 
+✦ *#kick* <@mención>
+┃➪ Muestra el ID del grupo 
+✦ *#lid*
+┃➪ Obtiene el enlace del grupo 
+✦ *#link*
+┃➪ Asciende a administrador 
+✦ *#promote* <@mención>
+┃➪ Menciona a los admins
+✦ *#tagadmin*
+┃➪ Menciona a todos 
+✦ *#tagall*
+┃➪ Mención con texto personalizado
+✦ *#tagtext* <texto>
+┃➪ Llama a los subbots 
+✦ *#invocar*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  IA ⊹
 > ✐ Comandos de inteligencia artificial.
 
-┃➪ Elimina el fondo de una imagen ✦ *#bg* <imagen>
-┃➪ Pregunta a Gemini ✦ *#gemini* <texto>
-┃➪ Edición mágica de imágenes ✦ *#magicstudio*
-┃➪ Genera imágenes con IA ✦ *#pollinations* <prompt>
-┃➪ Convierte imagen en estilo anime ✦ *#toanime* <imagen>
-┃➪ Aplica filtros estéticos ✦ *#wpw* <filtro>
+┃➪ Elimina el fondo de una imagen 
+✦ *#bg* <imagen>
+┃➪ Pregunta a Gemini 
+✦ *#gemini* <texto>
+┃➪ Edición mágica de imágenes 
+✦ *#magicstudio*
+┃➪ Genera imágenes con IA 
+✦ *#pollinations* <prompt>
+┃➪ Convierte imagen en estilo anime 
+✦ *#toanime* <imagen>
+┃➪ Aplica filtros estéticos 
+✦ *#wpw* <filtro>
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  JADIBOT ⊹
 > ✐ Comandos para vincular subbots
 
-┃➪ Vinculación por código QR ✦ *#qr*
-┃➪ Vinculación por código numérico ✦ *#code*
+┃➪ Vinculación por código QR 
+✦ *#qr*
+┃➪ Vinculación por código numérico 
+✦ *#code*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  OWNER ⊹
 > ✐ Comandos exclusivos para el owner.
 
-┃➪ Activa funciones del bot ✦ *#enable* <opción>
-┃➪ Desactiva funciones del bot ✦ *#disable* <opción>
-┃➪ Crea respaldo del bot ✦ *#backupbot* [--with-sessions]
+┃➪ Activa funciones del bot 
+✦ *#enable* <opción>
+┃➪ Desactiva funciones del bot 
+✦ *#disable* <opción>
+┃➪ Crea respaldo del bot 
+✦ *#backupbot* [--with-sessions]
 ┃➪ Ejecuta código JavaScript 
 ✦ *#>*
 ┃➪ Ejecuta código async 
 ✦ *#=>*
-┃➪ Unirse a un grupo por enlace ✦ *#join* <link>
+┃➪ Unirse a un grupo por enlace 
+✦ *#join* <link>
 ┃➪ Reinicia el bot 
 ✦ _#restart_
 ┃➪ Salir de un grupo 
