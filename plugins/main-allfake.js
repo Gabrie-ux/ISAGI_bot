@@ -93,7 +93,7 @@ global.fake = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo
 
 global.icono = [
 'https://cdn.yupra.my.id/yp/962jca9m.jpg',
-'https://cdn.yupra.my.id/yp/gy5x9qvk.jpg',
+'https://cdn.yupra.my.id/yp/bi3v6zn3.jpg',
 ].getRandom()
 
 // 🔥 Aquí los tres objetos que pediste 🔥
