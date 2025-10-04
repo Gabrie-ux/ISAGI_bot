@@ -1,14 +1,19 @@
 import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args }) => {
-let mentionedJid = await m.mentionedJid
-let userId = mentionedJid && mentionedJid[0] ? mentionedJid[0] : m.sender
-let totalreg = Object.keys(global.db.data.users).length
-let totalCommands = Object.values(global.plugins).filter((v) => v.help && v.tags).length
-    
-let txt =  `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
-> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ɴᴀɢɪ-ʙᴏᴛ, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
+let handler = async (m, { conn}) => {
+  const botname = 'ＮＡＧＩＢＯＴ－Ｖ'
+  const textbot = 'ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ'
+  const redes = 'https://github.com/hashirama-dev'
+  const banner = 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg'
+  const channelRD = {
+    id: '120363423335018677@newsletter',
+    name: 'ＮＡＧＩＢＯＴ－Ｖ'
+}
 
+  const userId = m.mentionedJid?.[0] || m.sender
+
+  const txt = `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
+> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ɴᴀɢɪ-ʙᴏᴛ, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
 ╭┈ ↷
 │ ✐ 𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-𝒇𝒆𝒅𝒆𝒙𝒚𝒛 ❤️
 │ ✐ ꒷ꕤ💎ദ ɢʀᴜᴘᴏ ᴏꜰɪᴄɪᴀʟ ꕥ
@@ -238,31 +243,32 @@ let txt =  `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
 ┃➪ _ _Actualizar el bot__
 ✦ #update
 
-╭─❒ ꕥ ɴᴀɢɪ-ʙᴏᴛᴠ𝟷 ꕥ
-│ ✐ 𝓓𝓮𝓼𝓲𝓰𝓷𝓮𝓭 𝓯𝓸𝓻 𝓔𝓵𝓲𝓽𝓮 𝓤𝓼𝓮𝓻𝓼 💎
-│ ✐ ꒷ꕤ💎ദ ᴘʀᴇᴍɪᴜᴍ ᴇxᴘᴇʀɪᴇɴᴄᴇ ʙʏ ɴᴀɢɪ-ʙᴏᴛ
-╰─────────────────`.trim()
-await conn.sendMessage(m.chat, { 
-text: txt,
-contextInfo: {
-mentionedJid: [userId],
-isForwarded: true,
-forwardedNewsletterMessageInfo: {
-newsletterJid: channelRD.id,
-serverMessageId: '',
-newsletterName: channelRD.name
+
+> ✐ ꒷ꕤ💎ദ ᴘʀᴇᴍɪᴜᴍ ᴇxᴘᴇʀɪᴇɴᴄᴇ ʙʏ ɴᴀɢɪ-ʙᴏᴛ`.trim()
+
+  await conn.sendMessage(m.chat, {
+    text: txt,
+    contextInfo: {
+      mentionedJid: [userId],
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: channelRD.id,
+        serverMessageId: '',
+        newsletterName: channelRD.name
 },
-externalAdReply: {
-title: botname,
-body: textbot,
-mediaType: 1,
-mediaUrl: redes,
-sourceUrl: redes,
-thumbnail: await (await fetch(banner)).buffer(),
-showAdAttribution: false,
-containsAutoReply: true,
-renderLargerThumbnail: true
-}}}, { quoted: m })
+      externalAdReply: {
+        title: botname,
+        body: textbot,
+        mediaType: 1,
+        mediaUrl: redes,
+        sourceUrl: redes,
+        thumbnail: await (await fetch(banner)).buffer(),
+        showAdAttribution: false,
+        containsAutoReply: true,
+        renderLargerThumbnail: true
+}
+}
+}, { quoted: m})
 }
 
 handler.help = ['menu']
