@@ -12,7 +12,7 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
       const min = Math.floor(ms / (1000 * 60)) % 60
       const hrs = Math.floor(ms / (1000 * 60 * 60)) % 24
       const days = Math.floor(ms / (1000 * 60 * 60 * 24))
-      return `${days? `${days} días, `: ''}${hrs? `${hrs} horas, `: ''}${min? `${min} minutos, `: ''}${seg? `${seg} segundos`: ''}`.trim()
+      return `${days? `${days} ᴅíᴀꜱ, `: ''}${hrs? `${hrs} ʜᴏʀᴀꜱ, `: ''}${min? `${min} ᴍɪɴᴜᴛᴏꜱ, `: ''}${seg? `${seg} ꜱᴇɢᴜɴᴅᴏꜱ`: ''}`.trim()
 }
 
     const botsInGroup = activeBots.filter(bot => participants.some(p => p.id === bot.jid))
@@ -24,27 +24,27 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
 ? botsInGroup.map(bot => {
           const isMain = bot.jid === global.conn.user.jid
           const mention = bot.jid.replace(/[^0-9]/g, '')
-          const uptime = bot.uptime? formatUptime(Date.now() - bot.uptime): 'Activo desde ahora'
-          return `@${mention}\n✦ Tipo: ${isMain? '*Principal*': '*Sub-Bot*'}\n✦ Tiempo activo: ${uptime}`
+          const uptime = bot.uptime? formatUptime(Date.now() - bot.uptime): 'ᴀᴄᴛɪᴠᴏ ᴅᴇꜱᴅᴇ ᴀʜᴏʀᴀ'
+          return `@${mention}\n✦ ᴛɪᴘᴏ: ${isMain? '*ᴘʀɪɴᴄɪᴘᴀʟ*': '*ꜱᴜʙ-ʙᴏᴛ*'}\n✦ ᴛɪᴇᴍᴘᴏ ᴀᴄᴛɪᴠᴏ: ${uptime}`
 }).join('\n\n')
-: '✧ No hay bots activos en este grupo.'
+: '✧ ɴᴏ ʜᴀʏ ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ.'
 
-    const message = `*「 𝑳𝒊𝒔𝒕𝒂 𝒅𝒆 𝒃𝒐𝒕𝒔 𝒂𝒄𝒕𝒊𝒗𝒐𝒔 」*
+    const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
 
-⚽ Bot Principal: *1*
-🤖 Sub-Bots: *${activeBots.length - 1}*
+⚽ ʙᴏᴛ ᴘʀɪɴᴄɪᴘᴀʟ: *1*
+🤖 ꜱᴜʙ-ʙᴏᴛꜱ: *${activeBots.length - 1}*
 
-❏ Bots en este grupo: *${botsInGroup.length}*
+❏ ʙᴏᴛꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ: *${botsInGroup.length}*
 
 ${botListText}
 
-> © 𝖯𝗈𝗐𝖾𝗋𝖾𝖽 𝖡𝗒 𝖬𝗈𝗈𝗇𝖿𝗋𝖺𝗋𝖾 𝗍𝖾𝖺𝗆 ☽`
+> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴғʀᴀʀᴇ ᴛᴇᴀᴍ ☽`
 
     const mentions = botsInGroup.map(bot => bot.jid.endsWith('@s.whatsapp.net')? bot.jid: `${bot.jid}@s.whatsapp.net`)
     await conn.sendMessage(m.chat, { text: message, mentions}, { quoted: m})
 
 } catch (error) {
-    m.reply(`⚠︎ Se ha producido un error.\n> Usa *${usedPrefix}report* para informarlo.\n\n${error.message}`)
+    m.reply(`⚠︎ ꜱᴇ ʜᴀ ᴘʀᴏᴅᴜᴄɪᴅᴏ ᴜɴ ᴇʀʀᴏʀ.\n> ᴜꜱᴀ *${usedPrefix}report* ᴘᴀʀᴀ ɪɴꜰᴏʀᴍᴀʀʟᴏ.\n\n${error.message}`)
 }
 }
 
