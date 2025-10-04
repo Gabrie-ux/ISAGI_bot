@@ -33,7 +33,7 @@ global.namechannel = 'ＮＡＧＩＢＯＴ－Ｖ¹'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => catalogo,)
 
 global.canalIdM = ["120363417186717632@newsletter", "120363423335018677@newsletter"]
-global.canalNombreM = ["ＮＡＧＩＢＯＴ－Ｖ¹", "Kaoruko"]
+global.canalNombreM = ["ＮＡＧＩＢＯＴ－Ｖ¹", "☕ 𝑴𝒐𝒐𝒏𝒇𝒓𝒂𝒓𝒆 𝒕𝒆𝒂𝒎"]
 global.channelRD = await getRandomChannel()
 
 global.d = new Date(new Date + 3600000)
