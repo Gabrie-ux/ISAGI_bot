@@ -1,13 +1,13 @@
 import fs from 'fs'
 
 let handler = async (m, { command, usedPrefix, plugins, conn}) => {
-
   const comandoBuscado = usedPrefix + command
+
   const existe = Array.isArray(plugins) && plugins.some(plugin => {
     if (!plugin.command) return false
 
     if (plugin.command instanceof RegExp) {
-      return plugin.command.test(command)
+      return plugin.command.test(command) || plugin.command.test(comandoBuscado)
 }
 
     if (Array.isArray(plugin.command)) {
