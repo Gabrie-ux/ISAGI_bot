@@ -12,7 +12,7 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
 
     const subBotsCount = activeBots.length - 1
     const subBotDisplay = subBotsCount>= 20
-? '❌ ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ʟᴀ ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ.'
+? '> ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ʟᴀ ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ.'
 : `🤖 ꜱᴜʙ-ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ: *${subBotsCount}*`
 
     const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
@@ -28,7 +28,7 @@ ${subBotDisplay}
       text: message,
       contextInfo: {
         externalAdReply: {
-          title: 'ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
+          title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
           body: 'ʟɪsᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ',
           thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
           mediaType: 1,
