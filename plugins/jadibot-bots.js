@@ -12,7 +12,7 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
 
     const subBotsCount = activeBots.length - 1
     const subBotDisplay = subBotsCount>= 10
-? '❌ ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ.'
+? '> ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ʟᴀ ʟɪꜱᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ.'
 : `🤖 ꜱᴜʙ-ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ: *${subBotsCount}*`
 
     const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
@@ -28,8 +28,8 @@ ${subBotDisplay}
       text: message,
       contextInfo: {
         externalAdReply: {
-          title: 'Nagi-BotV1',
-          body: 'lista de subbots activos',
+          title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
+          body: 'ʟɪsᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ',
           thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
           mediaType: 1,
           renderLargerThumbnail: true,
