@@ -1,12 +1,14 @@
-let handler = async (m, { conn }) => {
+import { createHash} from 'crypto'
+
+let handler = async (m, { conn}) => {
   const user = global.db.data.users[m.sender]
 
   if (!user.registered) {
-    return m.reply('❌ No estás registrado.\n\nUsa *.reg Nombre.Edad* para registrarte.')
-  }
+    return m.reply(`ꕥ No estás registrado.\n\n➪ Usa *.reg Nombre.Edad* para registrarte.`)
+}
 
-  const nombre = user.name || 'Desconocido'
-  const edad = user.age || '???'
+  const nombreAnterior = user.name || 'Desconocido'
+  const edadAnterior = user.age || '???'
 
   user.registered = false
   user.name = ''
@@ -18,21 +20,24 @@ let handler = async (m, { conn }) => {
   let pp = 'https://files.cloudkuimages.guru/images/LIMw5rVy.jpg'
   try {
     pp = await conn.profilePictureUrl(m.sender, 'image')
-  } catch (e) {}
+} catch (e) {}
+
+  const mensaje = `ꕥ *Registro eliminado correctamente*\n\n➪ Nombre anterior: *${nombreAnterior}*\n➪ Edad registrada: *${edadAnterior} años*\n\nꕥ Si deseas registrarte nuevamente, usa *#reg Nombre.Edad*\n➪ Gracias por usar el bot.`
 
   await conn.sendMessage(m.chat, {
-    text: `*𝖸𝖺 𝗇𝗈 𝖾𝗌𝗍𝖺́𝗌 𝗋𝖾𝗀𝗂𝗌𝗍𝗋𝖺𝖽𝗈 ❌*\n*𝖰𝗎𝗂𝖾𝗋𝖾𝗌 𝗋𝖾𝗀𝗂𝗌𝗍𝗋𝖺𝗋𝗍𝖾 𝗈𝗍𝗋𝖺 𝗏𝖾𝗓 𝗎𝗌𝖺 #reg*\n\n*𝖦𝗋𝖺𝖼𝗂𝖺𝗌 𝗉𝗈𝗋 𝗎𝗌𝖺𝗋 𝖾𝗅 𝖻𝗈𝗍*\n> ${dev}`,
+    text: mensaje,
     mentions: [m.sender],
     contextInfo: {
       externalAdReply: {
-        title: me,
+        title: 'ꕥ Registro eliminado',
+        body: `➪ Usuario: ${nombreAnterior}`,
         thumbnailUrl: pp,
         mediaType: 1,
         renderLargerThumbnail: true,
         sourceUrl: pp
-      }
-    }
-  }, { quoted: m })
+}
+}
+}, { quoted: m})
 }
 
 handler.help = ['unreg']
