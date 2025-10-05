@@ -1,7 +1,67 @@
-let handler = async (m, { conn}) => { let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;ttname;;;\nFN:ttname\nitem1.TEL;waid=13135550002:+1 (313) 555-0002\nitem1.X-ABLabel:Celular\nEND:VCARD`; let qkontak = { key: { fromMe: false, participant: "13135550002@s.whatsapp.net", remoteJid: "status@broadcast"}, message: { contactMessage: { displayName: "Meta Ai", vcard}}}; await conn.sendMessage(m.chat, { image: { url: "https://cdn.yupra.my.id/yp/6sw4yju9.jpg"}, caption: "🍡 *Nagi-Bot — Script Oficial*\n\n📂 Repositorio público mantenido por *Dev-fedexyz*\n⭐ ¡Apoya el proyecto dejando una estrella!\n\n🔗 GitHub: https://github.com/Dev-fedexyz17/Nagi-Bot", title: "⚙️ Nagi-Bot | Código fuente", footer: "© 2024 – 2025 Dev-fedexyz\nTodos los derechos reservados", interactiveButtons: [ { name: "cta_url", buttonParamsJson: JSON.stringify({ display_text: "🌐 Ver Repositorio", url: "https://github.com/Dev-fedexyz17/Nagi-Bot", merchant_url: "https://github.com/Dev-fedexyz17/Nagi-Bot"})}, { name: "cta_url", buttonParamsJson: JSON.stringify({ display_text: "🐛 Reportar un problema", url: "https://github.com/Dev-fedexyz17/Nagi-Bot/issues", merchant_url: "https://github.com/Dev-fedexyz17/Nagi-Bot/issues"})}, { name: "cta_url", buttonParamsJson: JSON.stringify({ display_text: "🔧 Pull Request", url: "https://github.com/Dev-fedexyz17/Nagi-Bot/pulls", merchant_url: "https://github.com/Dev-fedexyz17/Nagi-Bot/pulls"})} ], hasMediaAttachment: true}, { quoted: qkontak})}
+import fetch from 'node-fetch'
+import moment from 'moment'
 
-handler.help = ['script']
-handler.tags = ['info']
-handler.command = ['script', 'sc']
+const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:;ttname;;;
+FN:ttname
+item1.TEL;waid=13135550002:+1 (313) 555-0002
+item1.X-ABLabel:Celular
+END:VCARD`
+
+const qkontak = {
+  key: {
+    fromMe: false,
+    participant: "13135550002@s.whatsapp.net",
+    remoteJid: "status@broadcast"
+},
+  message: {
+    contactMessage: {
+      displayName: "Meta Ai",
+      vcard
+}
+}
+}
+
+const handler = async (m, { conn, usedPrefix}) => {
+  try {
+    await m.react('🕒')
+
+    const res = await fetch('https://api.github.com/repos/Dev-fedexyz17/Nagi-Bot')
+    if (!res.ok) throw new Error('No se pudo obtener los datos del repositorio.')
+
+    const json = await res.json()
+    const txt = `*乂  S C R I P T  -  M A I N  乂*\n\n` +
+      `✩ *Nombre*: ${json.name}\n` +
+      `✩ *Visitas*: ${json.watchers_count}\n` +
+      `✩ *Peso*: ${(json.size / 1024).toFixed(2)} MB\n` +
+      `✩ *Actualizado*: ${moment(json.updated_at).format('DD/MM/YY - HH:mm:ss')}\n` +
+      `✩ *Url*: ${json.html_url}\n` +
+      `✩ *Forks*: ${json.forks_count}\n` +
+      `✩ *Stars*: ${json.stargazers_count}\n\n` +
+      `> *Dev-fedexyz*`
+
+    const catalogo = { url: 'https://cdn.yupra.my.id/yp/6sw4yju9.jpg'} // ✅ imagen.jpg
+
+    await conn.sendMessage(m.chat, {
+      image: catalogo,
+      caption: txt,
+...global.rcanal
+}, { quoted: qkontak})
+
+    await m.react('✔️')
+
+} catch (err) {
+    await m.react('✖️')
+    await conn.sendMessage(m.chat, {
+      text: `⚠︎ Se ha producido un problema.\n> Usa *${usedPrefix}report* para informarlo.\n\n${err.message}`,
+...global.rcanal
+}, { quoted: m})
+}
+}
+
+handler.help = ['sc', 'script']
+handler.tags = ['main']
+handler.command = ['sc', 'script']
 
 export default handler
