@@ -10,7 +10,8 @@ const uploadFile = async (buffer, filename) => {
     headers: {
 ...form.getHeaders(),
       'User-Agent': 'Mozilla/5.0'
-}
+},
+    timeout: 60000
 })
 
   return res.data
@@ -27,17 +28,13 @@ const handler = async (m, { conn}) => {
   try {
     await m.react('⏳')
     const media = await quoted.download()
-    if (!media || media.length> 30 * 1024 * 1024) {
-      await m.react('❌')
-      return m.reply('✰ El archivo es demasiado grande (máx. 30MB).')
-}
+    if (!media) throw new Error('No se pudo descargar el archivo')
+    if (media.length> 30 * 1024 * 1024) throw new Error('Archivo demasiado grande')
 
     const filename = `img_${Date.now()}.jpg`
     const result = await uploadFile(media, filename)
 
-    if (!result.success ||!result.files?.[0]) {
-      throw new Error('Fallo en la subida')
-}
+    if (!result.success ||!result.files?.[0]) throw new Error('Fallo en la subida')
 
     const url = `https://cdn.yupra.my.id${result.files[0].url}`
 
@@ -71,9 +68,12 @@ const handler = async (m, { conn}) => {
     await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id})
     await m.react('✔️')
 
-} catch {
+} catch (e) {
     await m.react('❌')
-    return m.reply('✰ Error del servidor, intenta de nuevo.')
+    let msg = '✰ Error del servidor, intenta de nuevo.'
+    if (e.message.includes('grande')) msg = '✰ El archivo es demasiado grande (máx. 30MB).'
+    if (e.message.includes('descargar')) msg = '✰ No se pudo descargar la imagen.'
+    return m.reply(msg)
 }
 }
 
