@@ -3,7 +3,7 @@ import path from 'path'
 let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 
 let handler = m => m
-handler.before = async function (m, { conn, participants, groupMetadata}) {
+handler.before = async function (m, { conn}) {
   if (!m.messageStubType ||!m.isGroup ||!m.sender) return
 
   const chat = global.db.data.chats[m.chat]
@@ -37,12 +37,11 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
 
   let imageContent
   try {
-    imageContent = global.fotoperfil.startsWith('http')
-? { url: global.fotoperfil}
-: fs.readFileSync(path.resolve(global.fotoperfil))
+    const fallbackPath = path.join(process.cwd(), 'src', 'catalogo.jpg')
+    imageContent = fs.readFileSync(fallbackPath)
 } catch (e) {
-    console.log('❌ Error al cargar la imagen de perfil:', e.message)
-    imageContent = { url: 'https://files.catbox.moe/xr2m6u.jpg'} // respaldo
+    console.log('❌ Error al cargar imagen de respaldo:', e.message)
+    imageContent = { url: 'https://files.catbox.moe/xr2m6u.jpg'}
 }
 
   if (chat.detect && m.messageStubType === 21) {
@@ -60,15 +59,19 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
 } else if (chat.detect && m.messageStubType === 26) {
     await conn.sendMessage(m.chat, { text: status, mentions: [m.sender]}, { quoted: fkontak})
 } else if (chat.detect && m.messageStubType === 29) {
-    await conn.sendMessage(m.chat, {
-      text: admingp,
-      mentions: [m.sender, stubParam]
-}, { quoted: fkontak})
+    const affected = m.messageStubParameters?.[0]
+    const affectedTag = affected? `@${affected.split('@')[0]}`: 'alguien'
+    const mentions = affected? [m.sender, affected]: [m.sender]
+
+    const msg = `❒ ${affectedTag} ahora es admin del grupo.\n✦ Acción hecha por:\n➪ ${usuario}`
+    await conn.sendMessage(m.chat, { text: msg, mentions}, { quoted: fkontak})
 } else if (chat.detect && m.messageStubType === 30) {
-    await conn.sendMessage(m.chat, {
-      text: noadmingp,
-      mentions: [m.sender, stubParam]
-}, { quoted: fkontak})
+    const affected = m.messageStubParameters?.[0]
+    const affectedTag = affected? `@${affected.split('@')[0]}`: 'alguien'
+    const mentions = affected? [m.sender, affected]: [m.sender]
+
+    const msg = `❒ ${affectedTag} ha dejado de ser admin del grupo.\n✦ Acción hecha por:\n➪ ${usuario}`
+    await conn.sendMessage(m.chat, { text: msg, mentions}, { quoted: fkontak})
 } else {
     if (m.messageStubType === 2) return
     console.log({
