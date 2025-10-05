@@ -1,70 +1,7 @@
-let handler = async (m, { conn }) => {
-    let vcard = `BEGIN:VCARD
-VERSION:3.0
-N:;ttname;;;
-FN:ttname
-item1.TEL;waid=13135550002:+1 (313) 555-0002
-item1.X-ABLabel:Celular
-END:VCARD`;
-    let qkontak = {
-        key: {
-            fromMe: false,
-            participant: "13135550002@s.whatsapp.net",
-            remoteJid: "status@broadcast",
-        },
-        message: {
-            contactMessage: {
-                displayName: "Meta Ai",
-                vcard,
-            },
-        },
-    };
+let handler = async (m, { conn}) => { let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;ttname;;;\nFN:ttname\nitem1.TEL;waid=13135550002:+1 (313) 555-0002\nitem1.X-ABLabel:Celular\nEND:VCARD`; let qkontak = { key: { fromMe: false, participant: "13135550002@s.whatsapp.net", remoteJid: "status@broadcast"}, message: { contactMessage: { displayName: "Meta Ai", vcard}}}; await conn.sendMessage(m.chat, { image: { url: "https://cdn.yupra.my.id/yp/6sw4yju9.jpg"}, caption: "🍡 *Nagi-Bot — Script Oficial*\n\n📂 Repositorio público mantenido por *Dev-fedexyz*\n⭐ ¡Apoya el proyecto dejando una estrella!\n\n🔗 GitHub: https://github.com/Dev-fedexyz17/Nagi-Bot", title: "⚙️ Nagi-Bot | Código fuente", footer: "© 2024 – 2025 Dev-fedexyz\nTodos los derechos reservados", interactiveButtons: [ { name: "cta_url", buttonParamsJson: JSON.stringify({ display_text: "🌐 Ver Repositorio", url: "https://github.com/Dev-fedexyz17/Nagi-Bot", merchant_url: "https://github.com/Dev-fedexyz17/Nagi-Bot"})}, { name: "cta_url", buttonParamsJson: JSON.stringify({ display_text: "🐛 Reportar un problema", url: "https://github.com/Dev-fedexyz17/Nagi-Bot/issues", merchant_url: "https://github.com/Dev-fedexyz17/Nagi-Bot/issues"})}, { name: "cta_url", buttonParamsJson: JSON.stringify({ display_text: "🔧 Pull Request", url: "https://github.com/Dev-fedexyz17/Nagi-Bot/pulls", merchant_url: "https://github.com/Dev-fedexyz17/Nagi-Bot/pulls"})} ], hasMediaAttachment: true}, { quoted: qkontak})}
 
-    await conn.sendMessage(
-        m.chat,
-        {
-            image: { url: "https://cdn.yupra.my.id/yp/6sw4yju9.jpg" },
-            caption:
-                "⚽ *Proyecto Script Marck* 🍙\n" +
-                "📂 *Repositorio: Código fuente oficial de Nagi*\n" +
-                "✨ *¡No olvides dejar una ⭐ en el repo si te gusta!*",
-            title: "🍡 Nagi — Bot de WhatsApp",
-            subtitle: "",
-            footer: "*© 2024 – 2025 Marck Uwu*\n*Todos los derechos reservados*",
-            interactiveButtons: [
-                {
-                    name: "cta_url",
-                    buttonParamsJson: JSON.stringify({
-                        display_text: "🌐 Repositorio de GitHub",
-                        url: "https://github.com/Dev-fedexyz17502/Nagi-Bot",
-                        merchant_url: "https://github.com/Dev-fedexyz17502/Nagi-Bot",
-                    }),
-                },
-                {
-                    name: "cta_url",
-                    buttonParamsJson: JSON.stringify({
-                        display_text: "🐛 Reportar un problema",
-                        url: "https://github.com/El-brayan502/NagiBotV3/issues",
-                        merchant_url: "https://github.com/El-brayan502/NagiBotV3/issues",
-                    }),
-                },
-                {
-                    name: "cta_url",
-                    buttonParamsJson: JSON.stringify({
-                        display_text: "🔧 Pull Request",
-                        url: "https://github.com/El-brayan502/NagiBotV3/pulls",
-                        merchant_url: "https://github.com/El-brayan502/NagiBotV3/pulls",
-                    }),
-                },
-            ],
-            hasMediaAttachment: true,
-        },
-        { quoted: qkontak }
-    );
-};
+handler.help = ['script']
+handler.tags = ['info']
+handler.command = ['script', 'sc']
 
-handler.help = ["script"];
-handler.tags = ["info"];
-handler.command = ['script', 'sc'];
-
-export default handler;
+export default handler
