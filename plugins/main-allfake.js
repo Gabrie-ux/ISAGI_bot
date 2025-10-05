@@ -27,7 +27,7 @@ return res.data
 console.log(`Error : ${e}`)
 }}
 
-global.creador = 'wa.me/573001533523'
+global.creador = 'wa.me/5491137612743'
 global.ofcbot = `Wa.me/${conn.user.jid.split('@')[0]}?text=.code`
 global.namechannel = 'ＮＡＧＩＢＯＴ－Ｖ¹'
 global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => catalogo,)
@@ -106,7 +106,7 @@ global.rcanal = {
       newsletterName: channelRD.name,
     },
     externalAdReply: {
-      title: '𝑵𝒂𝒈𝒊-𝑩𝒐𝒕𝑽𝟏: 𝑫𝒆𝒗-𝒉𝒂𝒔𝒉𝒊𝒓𝒂𝒎𝒂',
+      title: '𝑵𝒂𝒈𝒊-𝑩𝒐𝒕𝑽𝟏: 𝑫𝒆𝒗-𝒇𝒆𝒅𝒆𝒙𝒚𝒛',
       body: '',
       mediaUrl: null,
       description: null,
@@ -148,7 +148,7 @@ global.rcanalw = {
       newsletterName: channelRD.name,
     },
     externalAdReply: {
-      title: 'ɴᴀɢɪ-ʙᴏᴛ Bʏ ᴍᴀʀᴄᴋ',
+      title: 'ɴᴀɢɪ-ʙᴏᴛ Bʏ Dᴇᴠ-ꜰᴇᴅᴇxʏᴢ',
       body: '',
       mediaUrl: null,
       description: null,
