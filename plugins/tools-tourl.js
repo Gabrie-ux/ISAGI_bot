@@ -1,5 +1,6 @@
 import axios from 'axios'
 import FormData from 'form-data'
+import { generateWAMessageFromContent, proto} from '@whiskeysockets/baileys'
 
 const uploadFile = async (buffer, filename) => {
   const form = new FormData()
@@ -33,8 +34,36 @@ const handler = async (m, { conn}) => {
 
     if (result.success && result.files?.[0]) {
       const url = `https://cdn.yupra.my.id${result.files[0].url}`
+
+      const msg = generateWAMessageFromContent(m.chat, {
+        viewOnceMessage: {
+          message: {
+            messageContextInfo: {
+              deviceListMetadata: {},
+              deviceListMetadataVersion: 2
+},
+            interactiveMessage: proto.Message.InteractiveMessage.create({
+              body: proto.Message.InteractiveMessage.Body.create({
+                text: `✰ Imagen subida\n✦ Copia el enlace con el botón`
+}),
+              footer: proto.Message.InteractiveMessage.Footer.create({
+                text: "NagiBot MD"
+}),
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons: [
+                  {
+                    name: "cta_copy",
+                    buttonParamsJson: `{"display_text":"✦ Copiar URL","id":"copy_url","copy_code":"${url}"}`
+}
+                ]
+})
+})
+}
+}
+}, {})
+
+      await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id})
       await m.react('✔️')
-      return m.reply(`✰ URL:\n${url}`)
 } else {
       throw new Error('Fallo en la subida')
 }
