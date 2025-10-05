@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 
 let handler = m => m
@@ -6,6 +8,7 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
 
   const chat = global.db.data.chats[m.chat]
   const usuario = `@${m.sender.split('@')[0]}`
+
   const fkontak = {
     key: {
       participants: '0@s.whatsapp.net',
@@ -32,11 +35,21 @@ handler.before = async function (m, { conn, participants, groupMetadata}) {
   const admingp = `❒ ${target} ahora es admin del grupo.\n✦ Acción hecha por:\n➪ ${usuario}`
   const noadmingp = `❒ ${target} ha dejado de ser admin del grupo.\n✦ Acción hecha por:\n➪ ${usuario}`
 
+  let imageContent
+  try {
+    imageContent = global.fotoperfil.startsWith('http')
+? { url: global.fotoperfil}
+: fs.readFileSync(path.resolve(global.fotoperfil))
+} catch (e) {
+    console.log('❌ Error al cargar la imagen de perfil:', e.message)
+    imageContent = { url: 'https://files.catbox.moe/xr2m6u.jpg'} // respaldo
+}
+
   if (chat.detect && m.messageStubType === 21) {
     await conn.sendMessage(m.chat, { text: nombre, mentions: [m.sender]}, { quoted: fkontak})
 } else if (chat.detect && m.messageStubType === 22) {
     await conn.sendMessage(m.chat, {
-      image: { url: global.fotoperfil}, 
+      image: imageContent,
       caption: foto,
       mentions: [m.sender]
 }, { quoted: fkontak})
