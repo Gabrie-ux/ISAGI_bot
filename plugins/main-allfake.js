@@ -135,6 +135,77 @@ handler.all = async function (m) {
     'https://cdn.yupra.my.id/yp/ykhrquj7.jpg'
   ].getRandom()
 
+global.rcanal = { contextInfo: { externalAdReply: { title: botname, mediaType: 2, previewType: "VIDEO", thumbnail: icono, mediaUrl: 'https://youtu.be/FKVuVneuwtg', sourceUrl: gp1 }}}
+
+export default handler
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
+async function getRandomChannel() {
+  const randomIndex = Math.floor(Math.random() * canalIdM.length)
+  const id = canalIdM[randomIndex]
+  const name = canalNombreM[randomIndex]
+  return { id, name}
+    }  const db = './src/database/db.json'
+  const db_ = JSON.parse(fs.readFileSync(db))
+  const random = Math.floor(Math.random() * db_.links[category].length)
+  const randomlink = db_.links[category][random]
+  const response = await fetch(randomlink)
+  const rimg = await response.buffer()
+  global.icons = rimg
+
+  const ase = new Date()
+  let hour = ase.getHours()
+  switch (true) {
+    case hour>= 0 && hour < 3: hour = '𝘍𝘦𝘭𝘪𝘻 𝘯𝘰𝘤𝘩𝘦 💤💤'; break
+    case hour>= 3 && hour < 13: hour = '𝘉𝘶𝘦𝘯 𝘥𝘪́𝘢 🖐🏻🌤️'; break
+    case hour>= 13 && hour < 18: hour = '𝘉𝘶𝘦𝘯𝘢𝘴 𝘵𝘢𝘳𝘥𝘦𝘴 🤹🏻✨'; break
+    default: hour = '𝘍𝘦𝘭𝘪𝘻 𝘯𝘰𝘤𝘩𝘦 💤💤'
+}
+  global.saludo = hour
+
+  global.nombre = m.pushName || 'Anónimo'
+  global.taguser = '@' + m.sender.split('@')[0]
+  const more = String.fromCharCode(8206)
+  global.readMore = more.repeat(850)
+
+  global.packsticker = `▸ ${dia}\n▸ ${tiempo}\n▸ ${fecha}\n▸ ${botname}\n`
+  global.packsticker2 = `\nＮＡＧＩＢＯＴ－Ｖ²`
+
+  global.fkontak = {
+    key: {
+      participant: '0@s.whatsapp.net',
+...(m.chat? { remoteJid: '6285600793871-1614953337@g.us'}: {})
+},
+    message: {
+    contactMessage: {
+        displayName: `${nombre}`,
+        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:XL;${nombre},;;;\nFN:${nombre},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`,
+        jpegThumbnail: null,
+        thumbnail: null,
+        sendEphemeral: true
+}
+}
+}
+
+  global.fake = {
+    contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: global.canalIdM,
+        newsletterName: global.canalNombreM,
+        serverMessageId: -1
+}
+}
+}
+
+  global.icono = [
+    'https://cdn.yupra.my.id/yp/962jca9m.jpg',
+    'https://cdn.yupra.my.id/yp/ykhrquj7.jpg'
+  ].getRandom()
+
   global.rcanal = {
     contextInfo: {
       isForwarded: true,
