@@ -24,5 +24,6 @@ let handler = async (m, { conn}) => {
 handler.help = ['limpiar']
 handler.tags = ['registro']
 handler.command = ['limpiar']
+handler.rowner = true;
 
 export default handler
