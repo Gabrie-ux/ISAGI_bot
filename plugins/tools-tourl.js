@@ -2,6 +2,28 @@ import axios from 'axios'
 import FormData from 'form-data'
 import { generateWAMessageFromContent, proto} from '@whiskeysockets/baileys'
 
+const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:;ttname;;;
+FN:ttname
+item1.TEL;waid=13135550002:+1 (313) 555-0002
+item1.X-ABLabel:Celular
+END:VCARD`
+
+const qkontak = {
+  key: {
+    fromMe: false,
+    participant: "13135550002@s.whatsapp.net",
+    remoteJid: "status@broadcast"
+},
+  message: {
+    contactMessage: {
+      displayName: "Meta Ai",
+      vcard
+}
+}
+}
+
 const uploadFile = async (buffer, filename) => {
   const form = new FormData()
   form.append('files', buffer, { filename})
@@ -21,7 +43,10 @@ const handler = async (m, { conn}) => {
   const mime = (quoted?.msg || quoted)?.mimetype || ''
 
   if (!quoted ||!mime ||!quoted.download ||!mime.startsWith('image/')) {
-    return m.reply('✰ Responde a una imagen para subirla.')
+    return conn.sendMessage(m.chat, {
+      text: '✰ Responde a una imagen para subirla.',
+...global.rcanal
+}, { quoted: qkontak})
 }
 
   try {
@@ -70,7 +95,10 @@ const handler = async (m, { conn}) => {
 
 } catch {
     await m.react('❌')
-    return m.reply('✰ Error del servidor, intenta de nuevo.')
+    return conn.sendMessage(m.chat, {
+      text: '✰ Error del servidor, intenta de nuevo.',
+...global.rcanal
+}, { quoted: qkontak})
 }
 }
 
