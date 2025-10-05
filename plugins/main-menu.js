@@ -41,6 +41,8 @@ let handler = async (m, { conn}) => {
 ✦ *#listarg*
 ┃➪ Elimina tu registro del bot 
 ✦ *#unreg*
+┃➪ Elimina los registros
+✦ *#limpiar*
 ┃➪ Regístrate como usuario 
 ✦ *#reg*
 
