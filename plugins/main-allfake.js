@@ -37,7 +37,7 @@ handler.all = async function (m) {
   global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => catalogo) // ✅ Corregido
 
   global.canalIdM = [
-    '120363417186717632@newsletter',
+    '120363402097425674@newsletter',
     '120363423335018677@newsletter'
   ]
   global.canalNombreM = [
