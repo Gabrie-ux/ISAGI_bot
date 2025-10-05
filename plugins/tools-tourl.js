@@ -2,28 +2,6 @@ import axios from 'axios'
 import FormData from 'form-data'
 import { generateWAMessageFromContent, proto} from '@whiskeysockets/baileys'
 
-const vcard = `BEGIN:VCARD
-VERSION:3.0
-N:;ttname;;;
-FN:ttname
-item1.TEL;waid=13135550002:+1 (313) 555-0002
-item1.X-ABLabel:Celular
-END:VCARD`
-
-const qkontak = {
-  key: {
-    fromMe: false,
-    participant: "13135550002@s.whatsapp.net",
-    remoteJid: "status@broadcast"
-},
-  message: {
-    contactMessage: {
-      displayName: "Meta Ai",
-      vcard
-}
-}
-}
-
 const uploadFile = async (buffer, filename) => {
   const form = new FormData()
   form.append('files', buffer, { filename})
@@ -43,9 +21,7 @@ const handler = async (m, { conn}) => {
   const mime = (quoted?.msg || quoted)?.mimetype || ''
 
   if (!quoted ||!mime ||!quoted.download ||!mime.startsWith('image/')) {
-    return conn.sendMessage(m.chat, {
-      text: '✰ Responde a una imagen para subirla.',
-}, { quoted: qkontak})
+    return m.reply('✰ Responde a una imagen para subirla.')
 }
 
   try {
@@ -53,9 +29,7 @@ const handler = async (m, { conn}) => {
     const media = await quoted.download()
     if (!media || media.length> 30 * 1024 * 1024) {
       await m.react('❌')
-      return conn.sendMessage(m.chat, {
-        text: '✰ El archivo es demasiado grande (máx. 30MB).',
-}, { quoted: qkontak})
+      return m.reply('✰ El archivo es demasiado grande (máx. 30MB).')
 }
 
     const filename = `img_${Date.now()}.jpg`
@@ -76,7 +50,7 @@ const handler = async (m, { conn}) => {
 },
           interactiveMessage: proto.Message.InteractiveMessage.create({
             body: proto.Message.InteractiveMessage.Body.create({
-              text: `✰ *Enlace generado:*\n${url}\n\n❀ Haz clic en el botón para copiar`
+              text: `✰ Imagen subida con éxito\n\n✦ Enlace:\n${url}\n\n❀ Haz clic en el botón para copiar`
 }),
             footer: proto.Message.InteractiveMessage.Footer.create({
               text: "✦ NagiBot MD"
@@ -97,11 +71,9 @@ const handler = async (m, { conn}) => {
     await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id})
     await m.react('✔️')
 
-} catch (e) {
+} catch {
     await m.react('❌')
-    return conn.sendMessage(m.chat, {
-      text: '✰ Error del servidor, intenta de nuevo más tarde.',
-}, { quoted: qkontak})
+    return m.reply('✰ Error del servidor, intenta de nuevo.')
 }
 }
 
