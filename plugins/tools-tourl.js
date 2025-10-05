@@ -60,6 +60,13 @@ const handler = async (m, { conn}) => {
     if (result.success && result.files?.[0]) {
       const url = `https://cdn.yupra.my.id${result.files[0].url}`
 
+      // Enviar mensaje con el enlace visible
+      await conn.sendMessage(m.chat, {
+        text: `✰ *Enlace generado:*\n${url}`,
+...global.rcanal
+}, { quoted: qkontak})
+
+      // Enviar botón para copiar el enlace
       const msg = generateWAMessageFromContent(m.chat, {
         viewOnceMessage: {
           message: {
@@ -69,10 +76,10 @@ const handler = async (m, { conn}) => {
 },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `✰ Imagen subida\n✦ Copia el enlace con el botón`
+                text: `❀ Imagen subida con éxito\n✦ Copia el enlace con el botón de abajo`
 }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "NagiBot MD"
+                text: "✰ NagiBot MD"
 }),
               nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                 buttons: [
