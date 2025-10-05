@@ -1,51 +1,50 @@
-//▪CÓDIGO BY HASHIRAMA PRROS XD▪
-//▪WHATSAPP MODS▪
+const linkRegex = /chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})/i
+const channelRegex = /whatsapp\.com\/channel\/([0-9A-Za-z]{20,24})/i
 
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i;
-let linkRegex1 = /whatsapp.com\/channel\/([0-9A-Za-z]{20,24})/i;
+export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner, participants}) {
+  if (!m.isGroup) return
+  if (isAdmin || isOwner || m.fromMe || isROwner) return
 
-export async function before(m, { conn, isAdmin, isBotAdmin, isOwner, isROwner, participants }) {
-  if (!m.isGroup) return;
-  if (isAdmin || isOwner || m.fromMe || isROwner) return;
+  const chat = global.db.data.chats[m.chat]
+  const sender = m.sender
+  const userTag = `@${sender.split('@')[0]}`
+  const isGroupLink = linkRegex.exec(m.text) || channelRegex.exec(m.text)
+  const groupLink = `https://chat.whatsapp.com/${await conn.groupInviteCode(m.chat)}`
+  const groupAdmins = participants.filter(p => p.admin)
+  const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n')
 
-  let chat = global.db.data.chats[m.chat];
-  let delet = m.key.participant;
-  let bang = m.key.id;
-  const user = `@${m.sender.split`@`[0]}`;
-  const groupAdmins = participants.filter(p => p.admin);
-  const listAdmin = groupAdmins.map((v, i) => `*» ${i + 1}. @${v.id.split('@')[0]}*`).join('\n');
-  let bot = global.db.data.settings[this.user.jid] || {};
-  const isGroupLink = linkRegex.exec(m.text) || linkRegex1.exec(m.text);
-  const grupo = `https://chat.whatsapp.com`;
+  if (chat.antiLink && isGroupLink && m.text.includes(groupLink)) return
 
-  if (isAdmin && chat.antiLink && m.text.includes(grupo)) {
-    return m.reply(`*[❗] el AntiLink está activo pero eres administrador no puede eliminarte*`);
-  }
-
-  if (chat.antiLink && isGroupLink && !isAdmin) {
-    if (isBotAdmin) {
-      const linkThisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`;
-      if (m.text.includes(linkThisGroup)) return !0;
-    }
-
-    await conn.sendMessage(m.chat, {
-      text: `*𝐀 𝐍 𝐓 𝐈 - 𝐋 𝐈 𝐍 𝐊*\n> Despierta a la realidad, Nada sale como se planea en este mundo maldito mientras más vives, Más te das cuenta, De que lo único  que realmente existe en esta realidad es el sufrimiento...`,
-      mentions: [m.sender]
-    }, { quoted: m, ephemeralExpiration: 24 * 60 * 100, disappearingMessagesInChat: 24 * 60 * 100 });
+  if (chat.antiLink && isGroupLink) {
 
     if (!isBotAdmin) {
       return conn.sendMessage(m.chat, {
-        text: `*[❗] El AntiLink está activo pero no soy administrador del grupo*\n\n\`📝Administrador del grupo\`\n${listAdmin}`,
-        mentions: [...groupAdmins.map(v => v.id)]
-      }, { quoted: m });
-    }
+        text: `*⚽ El AntiLink está activo pero no soy administrador del grupo.*\n\n📝 *Administradores del grupo:*\n${listAdmin}`,
+        mentions: groupAdmins.map(v => v.id)
+}, { quoted: m})
+}
 
-    if (isBotAdmin) {
-      await conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: bang, participant: delet } });
-      let responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
-      if (responseb[0]?.status === "404") return;
-    }
-  }
+    await conn.sendMessage(m.chat, {
+      text: `*A N T I - L I N K*\n\n${userTag}, has compartido un enlace externo.\nEsta acción está prohibida en este grupo.\n\n> *La ley de este mundo es el sufrimiento...*`,
+      mentions: [sender]
+}, {
+      quoted: m,
+      ephemeralExpiration: 24 * 60 * 1000,
+      disappearingMessagesInChat: 24 * 60 * 1000
+})
 
-  return !0;
+    await conn.sendMessage(m.chat, {
+      delete: {
+        remoteJid: m.chat,
+        fromMe: false,
+        id: m.key.id,
+        participant: m.key.participant
+}
+})
+
+    const response = await conn.groupParticipantsUpdate(m.chat, [sender], 'remove')
+    if (response[0]?.status === '404') return
+}
+
+  return true
 }
