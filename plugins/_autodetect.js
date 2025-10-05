@@ -1,56 +1,230 @@
+import chalk from 'chalk'
+import fs from 'fs'
+import path from 'path'
+import fetch from 'node-fetch'
 let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 
-let handler = m => m
-handler.before = async function (m, { conn, participants, groupMetadata }) {
-if (!m.messageStubType || !m.isGroup) return
-if (!m.sender) return // Verificar que m.sender esté definido
-const fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net"}  
-let chat = global.db.data.chats[m.chat]
-let usuario = `@${m.sender.split`@`[0]}`
-let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://files.catbox.moe/xr2m6u.jpg'
+const groupMetadataCache = new Map()
+const lidCache = new Map()
 
-let nombre, foto, edit, newlink, status, admingp, noadmingp
-nombre = `➤  ⏤͟͟͞͞${usuario} \`ʜᴀ ᴄᴀᴍʙɪᴀᴅᴏ ᴇʟ ɴᴏᴍʙʀᴇ ᴅᴇʟ ɢʀᴜᴘᴏ ᴀʜᴏʀᴀ ᴇʟ ɢʀᴜᴘᴏ sᴇ ʟʟᴀᴍᴀ\`:\n> *${m.messageStubParameters && m.messageStubParameters[0] ? m.messageStubParameters[0] : 'Nombre no disponible'}*.`
-foto = `➤  \`sᴇ ʜᴀ ᴄᴀᴍʙɪᴀᴅᴏ ʟᴀ ɪᴍᴀɢᴇɴ ᴅᴇʟ ɢʀᴜᴘᴏ  ᴇᴄʜᴏ ᴘᴏʀ\` ✎ ${usuario}`
-edit = `✨️ ${usuario} Ha permitido que ${m.messageStubParameters && m.messageStubParameters[0] ? (m.messageStubParameters[0] == 'on' ? 'solo admins' : 'todos') : 'desconocido'} puedan configurar el grupo.`
-newlink = `➤ \`ᴇʟ ᴇɴʟᴀᴄᴇ ᴅᴇʟ ɢʀᴜᴘᴏ ʜᴀ sɪᴅᴏ ʀᴇsᴛᴀʙʟᴇᴄɪᴅᴏ ᴀᴄᴄɪᴏ́ɴ ʜᴇᴄʜᴀ ᴘᴏʀ\` ✎ ${usuario}`
-status = `✨️ El grupo ha sido ${m.messageStubParameters && m.messageStubParameters[0] ? (m.messageStubParameters[0] == 'on' ? '*cerrado*' : '*abierto*') : 'modificado'} Por ${usuario}\n\n> ✧ Ahora ${m.messageStubParameters && m.messageStubParameters[0] ? (m.messageStubParameters[0] == 'on' ? '*solo admins*' : '*todos*') : 'estado desconocido'} pueden enviar mensaje.`
-admingp = `➤ ${m.messageStubParameters && m.messageStubParameters[0] ? `@${m.messageStubParameters[0].split`@`[0]}` : 'Alguien'} 𝘕𝘶𝘦𝘷𝘰 𝘢𝘥𝘮𝘪𝘯 𝘥𝘦𝘭 𝘎𝘳𝘶𝘱𝘰 𝘢𝘤𝘤𝘪𝘰́𝘯 𝘦𝘤𝘩𝘢 𝘱𝘰𝘳 : ${usuario}`
-noadmingp =  `➤ ${m.messageStubParameters && m.messageStubParameters[0] ? `@${m.messageStubParameters[0].split`@`[0]}` : 'Alguien'} \`*𝘋𝘦𝘫𝘢 𝘥𝘦 𝘴𝘦𝘳 𝘢𝘥𝘮𝘪𝘯 𝘥𝘦𝘭 𝘎𝘳𝘶𝘱𝘰 𝘱𝘰𝘳 𝘱𝘯𝘥𝘫 𝘓𝘰 𝘩𝘪𝘻𝘰\` ✐ ${usuario}`
-  
-if (chat.detect && m.messageStubType == 21) {
-await conn.sendMessage(m.chat, { text: nombre, mentions: [m.sender] }, { quoted: fkontak })   
+const handler = m => m
 
-} else if (chat.detect && m.messageStubType == 22) {
-await conn.sendMessage(m.chat, { image: { url: pp }, caption: foto, mentions: [m.sender] }, { quoted: fkontak })
+handler.before = async function (m, { conn, participants}) {
+  if (!m.messageStubType ||!m.isGroup) return
 
-} else if (chat.detect && m.messageStubType == 23) {
-await conn.sendMessage(m.chat, { text: newlink, mentions: [m.sender] }, { quoted: fkontak })    
+  const chat = global.db.data.chats[m.chat]
+  const primaryBot = chat.primaryBot
+  if (primaryBot && conn.user.jid!== primaryBot) throw false
 
-} else if (chat.detect && m.messageStubType == 25) {
-await conn.sendMessage(m.chat, { text: edit, mentions: [m.sender] }, { quoted: fkontak })  
+  const users = m.messageStubParameters[0]
+  const usuario = await resolveLidToRealJid(m.sender, conn, m.chat)
+  const groupAdmins = participants.filter(p => p.admin)
 
-} else if (chat.detect && m.messageStubType == 26) {
-await conn.sendMessage(m.chat, { text: status, mentions: [m.sender] }, { quoted: fkontak })  
-
-} else if (chat.detect && m.messageStubType == 29) {
-if (m.messageStubParameters && m.messageStubParameters[0]) {
-  await conn.sendMessage(m.chat, { text: admingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: fkontak })
-} else {
-  await conn.sendMessage(m.chat, { text: `✨️ alguien ha sido promovido a admin.\n\n> ✧ Acción hecha por:\n> » ${usuario}`, mentions: [m.sender] }, { quoted: fkontak })
+  const rcanal = {
+    contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: channelRD.id,
+        serverMessageId: '',
+        newsletterName: channelRD.name
+},
+      externalAdReply: {
+        title: '𐔌. ⋮ ᗩ ᐯ I Տ O.ᐟ ֹ ₊ ꒱',
+        body: textbot,
+        mediaUrl: null,
+        description: null,
+        previewType: 'PHOTO',
+        thumbnail: await (await fetch(icono)).buffer(),
+        sourceUrl: redes,
+        mediaType: 1,
+        renderLargerThumbnail: false
+},
+      mentionedJid: null
+}
 }
 
-} if (chat.detect && m.messageStubType == 30) {
-if (m.messageStubParameters && m.messageStubParameters[0]) {
-  await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.messageStubParameters[0]}`] }, { quoted: fkontak })
-} else {
-  await conn.sendMessage(m.chat, { text: `✨️ Alguien ha dejado de ser admin.\n\n> ✧ Acción hecha por:\n> » ${usuario}`, mentions: [m.sender] }, { quoted: fkontak })
+  const userTag = `@${usuario.split('@')[0]}`
+  const pp = await conn.profilePictureUrl(m.chat, 'image').catch(() => null) || 'https://files.catbox.moe/xr2m6u.jpg'
+
+  const nombre = `> ❀ ${userTag} Ha cambiado el nombre del grupo.\n> ✦ Ahora el grupo se llama:\n> *${users}*.`
+  const foto = `> ❀ Se ha cambiado la imagen del grupo.\n> ✦ Acción hecha por:\n> » ${userTag}`
+  const edit = `> ❀ ${userTag} Ha permitido que ${users === 'on'? 'solo admins': 'todos'} puedan configurar el grupo.`
+  const newlink = `> ❀ El enlace del grupo ha sido restablecido.\n> ✦ Acción hecha por:\n> » ${userTag}`
+  const status = `> ❀ El grupo ha sido ${users === 'on'? '*cerrado*': '*abierto*'} Por ${userTag}\n> ✦ Ahora ${users === 'on'? '*solo admins*': '*todos*'} pueden enviar mensaje.`
+  const admingp = `> ❀ @${users.split('@')[0]} Ahora es admin del grupo.\n> ✦ Acción hecha por:\n> » ${userTag}`
+  const noadmingp = `> ❀ @${users.split('@')[0]} Deja de ser admin del grupo.\n> ✦ Acción hecha por:\n> » ${userTag}`
+
+  // Eliminar sesión si el tipo es 2
+  if (chat.detect && m.messageStubType === 2) {
+    const uniqid = (m.isGroup? m.chat: m.sender).split('@')[0]
+    const sessionPath = `./${sessions}/`
+    for (const file of await fs.promises.readdir(sessionPath)) {
+      if (file.includes(uniqid)) {
+        await fs.promises.unlink(path.join(sessionPath, file))
+        console.log(`${chalk.yellow.bold('✎ Delete!')} ${chalk.greenBright(`'${file}'`)}\n${chalk.redBright('Que provoca el "undefined" en el chat.')}`)
 }
+}
+}
+
+  // Mensajes según tipo de evento
+  if (chat.detect && m.messageStubType === 21) {
+    rcanal.contextInfo.mentionedJid = [usuario,...groupAdmins.map(v => v.id)]
+    await this.sendMessage(m.chat, { text: nombre,...rcanal}, { quoted: null})
+}
+
+  if (chat.detect && m.messageStubType === 22) {
+    rcanal.contextInfo.mentionedJid = [usuario,...groupAdmins.map(v => v.id)]
+    await this.sendMessage(m.chat, { image: { url: pp}, caption: foto,...rcanal}, { quoted: null})
+}
+
+  if (chat.detect && m.messageStubType === 23) {
+    rcanal.contextInfo.mentionedJid = [usuario,...groupAdmins.map(v => v.id)]
+    await this.sendMessage(m.chat, { text: newlink,...rcanal}, { quoted: null})
+}
+
+  if (chat.detect && m.messageStubType === 25) {
+    rcanal.contextInfo.mentionedJid = [usuario,...groupAdmins.map(v => v.id)]
+    await this.sendMessage(m.chat, { text: edit,...rcanal}, { quoted: null})
+}
+if (chat.detect && m.messageStubType === 26) {
+    rcanal.contextInfo.mentionedJid = [usuario,...groupAdmins.map(v => v.id)]
+    await this.sendMessage(m.chat, { text: status,...rcanal}, { quoted: null})
+}
+
+  if (chat.detect && m.messageStubType === 29) {
+    rcanal.contextInfo.mentionedJid = [usuario, users,...groupAdmins.map(v => v.id)].filter(Boolean)
+    await this.sendMessage(m.chat, { text: admingp,...rcanal}, { quoted: null})
+    return
+}
+
+  if (chat.detect && m.messageStubType === 30) {
+    rcanal.contextInfo.mentionedJid = [usuario, users,...groupAdmins.map(v => v.id)].filter(Boolean)
+    await this.sendMessage(m.chat, { text: noadmingp,...rcanal}, { quoted: null})
 } else {
-if (m.messageStubType == 2) return
-console.log({messageStubType: m.messageStubType,
-messageStubParameters: m.messageStubParameters,
-type: WAMessageStubType[m.messageStubType], 
+    if (m.messageStubType === 2) return
+    console.log({
+      messageStubType: m.messageStubType,
+      messageStubParameters: m.messageStubParameters,
+      type: WAMessageStubType[m.messageStubType]
 })
-}}
+}
+}
+
 export default handler
+
+async function resolveLidToRealJid(lid, conn, groupChatId, maxRetries = 3, retryDelay = 60000) {
+  const inputJid = lid.toString()
+  if (!inputJid.endsWith('@lid') ||!groupChatId?.endsWith('@g.us')) {
+    return inputJid.includes('@')? inputJid: `${inputJid}@s.whatsapp.net`
+}
+
+  if (lidCache.has(inputJid)) return lidCache.get(inputJid)
+
+  const lidToFind = inputJid.split('@')[0]
+  let attempts = 0
+
+  while (attempts < maxRetries) {
+    try {
+      const metadata = await conn?.groupMetadata(groupChatId)
+      if (!metadata?.participants) throw new Error('No se obtuvieron participantes')
+
+      for (const participant of metadata.participants) {
+        try {
+          if (!participant?.jid) continue
+          const contactDetails = await conn?.onWhatsApp(participant.jid)
+          if (!contactDetails?.[0]?.lid) continue
+
+          const possibleLid = contactDetails[0].lid.split('@')[0]
+          if (possibleLid === lidToFind) {
+            lidCache.set(inputJid, participant.jid)
+            return participant.jid
+}
+} catch {
+          continue
+}
+}
+
+      lidCache.set(inputJid, inputJid)
+      return inputJid
+} catch {
+      if (++attempts>= maxRetries) {
+        lidCache.set(inputJid, inputJid)
+        return inputJid
+}
+      await new Promise(resolve => setTimeout(resolve, retryDelay))
+}
+}
+
+  return inputJid
+}
+if (chat.detect && m.messageStubType === 26) {
+    rcanal.contextInfo.mentionedJid = [usuario,...groupAdmins.map(v => v.id)]
+    await this.sendMessage(m.chat, { text: status,...rcanal}, { quoted: null})
+}
+
+  if (chat.detect && m.messageStubType === 29) {
+    rcanal.contextInfo.mentionedJid = [usuario, users,...groupAdmins.map(v => v.id)].filter(Boolean)
+    await this.sendMessage(m.chat, { text: admingp,...rcanal}, { quoted: null})
+    return
+}
+
+  if (chat.detect && m.messageStubType === 30) {
+    rcanal.contextInfo.mentionedJid = [usuario, users,...groupAdmins.map(v => v.id)].filter(Boolean)
+    await this.sendMessage(m.chat, { text: noadmingp,...rcanal}, { quoted: null})
+} else {
+    if (m.messageStubType === 2) return
+    console.log({
+      messageStubType: m.messageStubType,
+      messageStubParameters: m.messageStubParameters,
+      type: WAMessageStubType[m.messageStubType]
+})
+}
+}
+
+export default handler
+
+async function resolveLidToRealJid(lid, conn, groupChatId, maxRetries = 3, retryDelay = 60000) {
+  const inputJid = lid.toString()
+  if (!inputJid.endsWith('@lid') ||!groupChatId?.endsWith('@g.us')) {
+    return inputJid.includes('@')? inputJid: `${inputJid}@s.whatsapp.net`
+}
+
+  if (lidCache.has(inputJid)) return lidCache.get(inputJid)
+
+  const lidToFind = inputJid.split('@')[0]
+  let attempts = 0
+
+  while (attempts < maxRetries) {
+    try {
+      const metadata = await conn?.groupMetadata(groupChatId)
+      if (!metadata?.participants) throw new Error('No se obtuvieron participantes')
+
+      for (const participant of metadata.participants) {
+        try {
+          if (!participant?.jid) continue
+          const contactDetails = await conn?.onWhatsApp(participant.jid)
+          if (!contactDetails?.[0]?.lid) continue
+
+          const possibleLid = contactDetails[0].lid.split('@')[0]
+          if (possibleLid === lidToFind) {
+            lidCache.set(inputJid, participant.jid)
+            return participant.jid
+}
+} catch {
+          continue
+}
+}
+
+      lidCache.set(inputJid, inputJid)
+      return inputJid
+} catch {
+      if (++attempts>= maxRetries) {
+        lidCache.set(inputJid, inputJid)
+        return inputJid
+}
+      await new Promise(resolve => setTimeout(resolve, retryDelay))
+}
+}
+
+  return inputJid
+}
