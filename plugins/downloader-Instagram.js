@@ -1,52 +1,61 @@
-import axios from 'axios';
-
-const handler = async (m, { text, conn, args }) => {
-  if (!args[0]) {
-    return conn.reply(m.chat, '*[❗] Por favor Ingrese un, Link de instagram*', m, rcanal)
-  }
-
-  const instagramUrl = args[0];
-  let res;
-
+const handler = async (m, { args, conn, usedPrefix}) => {
   try {
-    await m.react('🐬');
-    res = await axios.get(`https://apis-starlights-team.koyeb.app/starlight/instagram-dl?url=${encodeURIComponent(instagramUrl)}`);
-  } catch (e) {
-    return conn.reply(m.chat, '*[❗] Erorr de tu enlace, Intenta con otro*', m, rcanal)
-  }
-
-  const result = res.data;
-  if (!result || result.data.length === 0) {
-    return conn.reply(m.chat, '*[❗] No se encontraron resultados*', m, rcanal)
-  }
-
-  const videoData = result.data[0]; 
-  const videoUrl = videoData.dl_url;
-
-  if (!videoUrl) {
-    return conn.reply(m.chat, '*[❗] No se encontraron de tu enlace,*', m, rcanal)
-  }
-
-  const maxRetries = 3;
-
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-    try {
-      await conn.sendMessage(m.chat, { video: { url: videoUrl }, caption: '*Aquí tienes tu, Vídeo 📝*', fileName: 'instagram.mp4', mimetype: 'video/mp4' }, { quoted: m });
-      await m.react('✅');
-      break;
-    } catch (e) {
-      if (attempt === maxRetries) {
-        await m.react('❌');
-        return conn.reply(m.chat, '*Error al enviar el video intenta más tarde ✍🏻*', m, rcanal)
-      }
-      await new Promise(resolve => setTimeout(resolve, 1000));
-    }
-  }
+    if (!args[0]) {
+      return conn.sendMessage(m.chat, {
+        text: '❀ Por favor, ingresa un enlace de Instagram/Facebook.',
+...global.rcanal
+}, { quoted: m})
 }
 
-handler.help = ['instagram <url>'];
-handler.tags = ['downloader'];
-handler.command = ['ig', 'instagram', 'igdl']
-handler.register = true;
+    let data = []
+    await m.react('🕒')
 
-export default handler;
+    try {
+      const api = `${global.APIs.vreden.url}/api/igdownload?url=${encodeURIComponent(args[0])}`
+      const res = await fetch(api)
+      const json = await res.json()
+      if (json.resultado?.respuesta?.datos?.length) {
+        data = json.resultado.respuesta.datos.map(v => v.url)
+}
+} catch {}
+
+    if (!data.length) {
+      try {
+        const api = `${global.APIs.delirius.url}/download/instagram?url=${encodeURIComponent(args[0])}`
+        const res = await fetch(api)
+        const json = await res.json()
+        if (json.status && json.data?.length) {
+          data = json.data.map(v => v.url)
+}
+} catch {}
+}
+
+    if (!data.length) {
+      return conn.sendMessage(m.chat, {
+        text: 'ꕥ No se pudo obtener el contenido.',
+...global.rcanal
+}, { quoted: m})
+}
+
+    for (let media of data) {
+      await conn.sendFile(m.chat, media, 'instagram.mp4', '❀ Aquí tienes ฅ^•ﻌ•^ฅ.', m, false, {
+...global.rcanal
+})
+      await m.react('✔️')
+}
+
+} catch (error) {
+    await m.react('✖️')
+    await conn.sendMessage(m.chat, {
+      text: `⚠︎ Se ha producido un problema.\n> Usa *${usedPrefix}report* para informarlo.\n\n${error.message}`,
+...global.rcanal
+}, { quoted: m})
+}
+}
+
+handler.command = ['instagram', 'ig', 'facebook', 'fb']
+handler.tags = ['descargas']
+handler.help = ['instagram', 'ig', 'facebook', 'fb']
+handler.group = true
+
+export default handler
