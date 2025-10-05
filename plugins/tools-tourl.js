@@ -45,7 +45,6 @@ const handler = async (m, { conn}) => {
   if (!quoted ||!mime ||!quoted.download ||!mime.startsWith('image/')) {
     return conn.sendMessage(m.chat, {
       text: '✰ Responde a una imagen para subirla.',
-...global.rcanal
 }, { quoted: qkontak})
 }
 
@@ -60,13 +59,6 @@ const handler = async (m, { conn}) => {
     if (result.success && result.files?.[0]) {
       const url = `https://cdn.yupra.my.id${result.files[0].url}`
 
-      // Enviar mensaje con el enlace visible
-      await conn.sendMessage(m.chat, {
-        text: `✰ *Enlace generado:*\n${url}`,
-...global.rcanal
-}, { quoted: qkontak})
-
-      // Enviar botón para copiar el enlace
       const msg = generateWAMessageFromContent(m.chat, {
         viewOnceMessage: {
           message: {
@@ -76,10 +68,10 @@ const handler = async (m, { conn}) => {
 },
             interactiveMessage: proto.Message.InteractiveMessage.create({
               body: proto.Message.InteractiveMessage.Body.create({
-                text: `❀ Imagen subida con éxito\n✦ Copia el enlace con el botón de abajo`
+                text: `✰ *Enlace generado:*\n${url}\n\n❀ Haz clic en el botón para copiar`
 }),
               footer: proto.Message.InteractiveMessage.Footer.create({
-                text: "✰ NagiBot MD"
+                text: "✦ NagiBot MD"
 }),
               nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                 buttons: [
@@ -104,7 +96,6 @@ const handler = async (m, { conn}) => {
     await m.react('❌')
     return conn.sendMessage(m.chat, {
       text: '✰ Error del servidor, intenta de nuevo.',
-...global.rcanal
 }, { quoted: qkontak})
 }
 }
