@@ -1,10 +1,10 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn}) => {
-  const botname = '© ＮＡＧＩＢＯＴ－Ｖ¹'
+  const botname = '© REY BALDUINO－Ｖ2'
   const textbot = 'ꕥ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ'
   const redes = 'https://github.com/hashirama-dev'
-  const banner = 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg'
+  const banner = 'https://files.catbox.moe/e5mqir.jpg'
   const channelRD = {
     id: '120363423335018677@newsletter',
     name: 'ＮＡＧＩＢＯＴ－Ｖ¹'
@@ -13,7 +13,7 @@ let handler = async (m, { conn}) => {
   const userId = m.mentionedJid?.[0] || m.sender
 
   const txt = `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
-> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ɴᴀɢɪ-ʙᴏᴛ, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
+> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ REY BALDUINO-BOT, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
 ╭┈ ↷
 │ ✐ 𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-𝒇𝒆𝒅𝒆𝒙𝒚𝒛 ❤️
 │ ✐ ꒷ꕤ💎ദ ɢʀᴜᴘᴏ ᴏꜰɪᴄɪᴀʟ ꕥ
