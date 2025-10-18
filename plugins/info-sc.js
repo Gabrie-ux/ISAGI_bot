@@ -5,7 +5,7 @@ const vcard = `BEGIN:VCARD
 VERSION:3.0
 N:;ttname;;;
 FN:ttname
-item1.TEL;waid=13135550002:+1 (313) 555-0002
+item1.TEL;waid=51941247696:+51941247696
 item1.X-ABLabel:Celular
 END:VCARD`
 
@@ -27,7 +27,7 @@ const handler = async (m, { conn, usedPrefix}) => {
   try {
     await m.react('🕒')
 
-    const res = await fetch('https://api.github.com/repos/Dev-fedexyz17/Nagi-Bot')
+    const res = await fetch('https://github.com/Gabrie-ux/isagi_BOT')
     if (!res.ok) throw new Error('No se pudo obtener los datos del repositorio.')
 
     const json = await res.json()
@@ -39,7 +39,7 @@ const handler = async (m, { conn, usedPrefix}) => {
       `✩ *Url*: ${json.html_url}\n` +
       `✩ *Forks*: ${json.forks_count}\n` +
       `✩ *Stars*: ${json.stargazers_count}\n\n` +
-      `> *Dev-fedexyz*`
+      `> *Dev-gabriel*`
 
     const catalogo = { url: 'https://cdn.yupra.my.id/yp/6sw4yju9.jpg'} // ✅ imagen.jpg
 
