@@ -6,7 +6,7 @@ let handler = async (m, { conn}) => {
   const redes = 'https://github.com/hashirama-dev'
   const banner = 'https://files.catbox.moe/e5mqir.jpg'
   const channelRD = {
-    id: '120363423335018677@newsletter',
+    id: '120363420590235387@newsletter',
     name: 'I S A G I－Ｖ¹'
 }
 
