@@ -7,7 +7,7 @@ let handler = async (m, { conn}) => {
   const banner = 'https://files.catbox.moe/e5mqir.jpg'
   const channelRD = {
     id: '120363423335018677@newsletter',
-    name: 'ＮＡＧＩＢＯＴ－Ｖ¹'
+    name: 'I S A G I－Ｖ¹'
 }
 
   const userId = m.mentionedJid?.[0] || m.sender
