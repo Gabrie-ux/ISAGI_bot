@@ -11,7 +11,7 @@ let handler = async (m, { conn}) => {
           body: 'Base de datos reiniciada con éxito',
           thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
           mediaType: 1,
-          sourceUrl: 'https://github.com/Dev-fedexyz17/Nagi-Bot',
+          sourceUrl: 'https://github.com/Gabrie-ux/isagi_BOT',
           renderLargerThumbnail: true
 }
 }
