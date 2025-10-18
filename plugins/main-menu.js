@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn}) => {
-  const botname = '© REY BALDUINO－Ｖ2'
-  const textbot = 'ꕥ ʟɪꜱᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏꜱ ᴅɪꜱᴘᴏɴɪʙʟᴇꜱ'
+  const botname = '© ISAGI YOICHI－Ｖ2'
+  const textbot = 'ꕥ LISTA DE COMANDOS DE ISAGI YOICHI'
   const redes = 'https://github.com/hashirama-dev'
   const banner = 'https://files.catbox.moe/e5mqir.jpg'
   const channelRD = {
@@ -13,9 +13,9 @@ let handler = async (m, { conn}) => {
   const userId = m.mentionedJid?.[0] || m.sender
 
   const txt = `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
-> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ REY BALDUINO-BOT, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
+> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ISAGI-BOT, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
 ╭┈ ↷
-│ ✐ 𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-𝒇𝒆𝒅𝒆𝒙𝒚𝒛 ❤️
+│ ✐ 𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-gabriel 🇵🇪👻
 │ ✐ ꒷ꕤ💎ദ ɢʀᴜᴘᴏ ᴏꜰɪᴄɪᴀʟ ꕥ
 │ chat.whatsapp.com/F1A3vMyQLnh0LAnJvpdjng
 │ ✐ ꒷ꕤ💎ദ ᴄᴀɴᴀʟ ᴏғɪᴄɪᴀʟ ෴
