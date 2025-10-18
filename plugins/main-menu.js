@@ -4,7 +4,7 @@ let handler = async (m, { conn}) => {
   const botname = '© ISAGI YOICHI－Ｖ2'
   const textbot = 'ꕥ LISTA DE COMANDOS DE ISAGI YOICHI'
   const redes = 'https://github.com/hashirama-dev'
-  const banner = 'https://files.catbox.moe/e5mqir.jpg'
+  const banner = 'https://cdn.yupra.my.id/yp/tuc0z9m4.jpg'
   const channelRD = {
     id: '120363420590235387@newsletter',
     name: 'I S A G I－Ｖ¹'
@@ -22,10 +22,10 @@ let handler = async (m, { conn}) => {
 │ whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N
 ╰─────────────────
 
-> *_ꜱɪ ᴇɴᴄᴜᴇɴᴛʀᴀꜱ ᴀʟɢᴜ́ɴ ᴇʀʀᴏʀ, ᴘᴏʀ ꜰᴀᴠᴏʀ ᴄᴏɴᴛᴀᴄᴛᴀ ᴀʟ ᴏᴡɴᴇʀ._*
+> *_SI ENCUENTRAS ALGÚNA. FALLA DEL BOT COMUNICATE CON .OWNER ISAGI-YOICHI._*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  INFO ⊹
-> ✐ Comandos de información general.
+> ✐ Comandos del menu  general.
 
 ┃➪ Muestra el menú completo del bot 
 ✦ *#menu* • *#help*
@@ -242,7 +242,7 @@ let handler = async (m, { conn}) => {
 ┃➪  _Convierte archivos en enlaces_
 ✦ *#tourl* <archivo>
 
-> ✐ ꒷ꕤ💎ദ ᴘʀᴇᴍɪᴜᴍ ᴇxᴘᴇʀɪᴇɴᴄᴇ ʙʏ ɴᴀɢɪ-ʙᴏᴛ`.trim()
+> ✐ ꒷ꕤ💎ദ ᴘʀᴇᴍɪᴜᴍ ᴇxᴘᴇʀɪᴇɴᴄᴇ ʙʏ Isagi-ʙᴏᴛ`.trim()
 
   await conn.sendMessage(m.chat, {
     text: txt,
