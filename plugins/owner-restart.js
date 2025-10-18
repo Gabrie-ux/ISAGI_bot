@@ -1,7 +1,7 @@
 let handler = async (m, { conn}) => {
   try {
     await conn.sendMessage(m.chat, {
-      text: `╭─❒ *Reiniciando Nagi-Bot...*\n┃➪ Cerrando procesos internos\n┃➪ Limpiando memoria temporal\n┃➪ Reinicio en curso...\n╰───────────────────────`,
+      text: `╭─❒ *Reiniciando Isagi-Bot...*\n┃➪ Cerrando procesos internos\n┃➪ Limpiando memoria temporal\n┃➪ Reinicio en curso...\n╰───────────────────────`,
       mentions: [m.sender]
 });
 
