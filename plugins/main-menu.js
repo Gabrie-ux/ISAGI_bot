@@ -4,7 +4,7 @@ let handler = async (m, { conn}) => {
   const botname = '© ISAGI YOICHI－Ｖ2'
   const textbot = 'ꕥ LISTA DE COMANDOS DE ISAGI YOICHI'
   const redes = 'https://github.com/hashirama-dev'
-  const banner = 'https://cdn.yupra.my.id/yp/tuc0z9m4.jpg'
+  const banner = 'https://files.catbox.moe/jzg4up.jpg'
   const channelRD = {
     id: '120363420590235387@newsletter',
     name: 'I S A G I－Ｖ¹'
