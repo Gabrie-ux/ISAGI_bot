@@ -19,7 +19,7 @@ let handler = async (m, { conn}) => {
 │ ✐ ꒷ꕤ💎ദ ɢʀᴜᴘᴏ ᴏꜰɪᴄɪᴀʟ ꕥ
 │ chat.whatsapp.com/F1A3vMyQLnh0LAnJvpdjng
 │ ✐ ꒷ꕤ💎ദ ᴄᴀɴᴀʟ ᴏғɪᴄɪᴀʟ ෴
-│ whatsapp.com/channel/0029VbApe6jG8l5Nv43dsC2N
+│https://whatsapp.com/channel/0029Vb6nOKBD8SDp0aFtCD3R
 ╰─────────────────
 
 > *_SI ENCUENTRAS ALGÚNA. FALLA DEL BOT COMUNICATE CON .OWNER ISAGI-YOICHI._*
