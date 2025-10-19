@@ -31,18 +31,18 @@ handler.all = async function (m) {
 }
 }
 
-  global.creador = 'wa.me/5491137612743'
+  global.creador = 'wa.me/51941247696'
   global.ofcbot = `Wa.me/${conn.user.jid.split('@')[0]}?text=.code`
-  global.namechannel = 'ＮＡＧＩＢＯＴ－Ｖ¹'
+  global.namechannel = 'I S A G I－Ｖ¹'
   global.fotoperfil = await conn.profilePictureUrl(m.sender, 'image').catch(_ => catalogo) // ✅ Corregido
 
   global.canalIdM = [
-    '120363402097425674@newsletter',
-    '120363423335018677@newsletter'
+    '120363420590235387@newsletter',
+    '120363420590235387@newsletter'
   ]
   global.canalNombreM = [
-    'ＮＡＧＩＢＯＴ－Ｖ¹',
-    '☕ 𝑴𝒐𝒐𝒏𝒇𝒓𝒂𝒓𝒆 𝒕𝒆𝒂𝒎'
+    'I S A G I－Ｖ¹',
+    '☕ ISAGI 𝒕𝒆𝒂𝒎'
   ]
   global.channelRD = await getRandomChannel()
 
@@ -71,9 +71,9 @@ handler.all = async function (m) {
 
   const canal = 'https://whatsapp.com/channel/0029Vb6BDQc0lwgsDN1GJ31i'
   const comunidad = 'https://chat.whatsapp.com/I0dMp2fEle7L6RaWBmwlAa'
-  const git = 'https://github.com/El-brayan502'
-  const github = 'https://github.com/El-brayan502'
-  const correo = 'brayanfree881@gmail.com'
+  const git = 'https://github.com/gabrie-ux'
+  const github = 'https://github.com/gabrie-ux'
+  const correo = 'doxeosgr@gmail.com'
   global.redes = [canal, comunidad, git, github, correo].getRandom()
 
   const category = 'imagen'
@@ -236,7 +236,7 @@ async function getRandomChannel() {
         newsletterName: channelRD.name
 },
       externalAdReply: {
-        title: 'N A G I - A I',
+        title: 'I S A G I - A I',
         body: '',
         mediaUrl: null,
         description: null,
