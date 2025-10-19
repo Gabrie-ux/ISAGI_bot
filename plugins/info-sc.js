@@ -1,13 +1,15 @@
 import fetch from 'node-fetch'
 import moment from 'moment'
 
-const vcard = `BEGIN:VCARD
+const vcard = `
+BEGIN:VCARD
 VERSION:3.0
 N:;ttname;;;
 FN:ttname
 item1.TEL;waid=51941247696:+51941247696
 item1.X-ABLabel:Celular
-END:VCARD`
+END:VCARD
+`
 
 const qkontak = {
   key: {
@@ -27,7 +29,7 @@ const handler = async (m, { conn, usedPrefix}) => {
   try {
     await m.react('🕒')
 
-    const res = await fetch('https://github.com/Gabrie-ux/isagi_BOT')
+    const res = await fetch('https://api.github.com/repos/Gabrie-ux/isagi_BOT')
     if (!res.ok) throw new Error('No se pudo obtener los datos del repositorio.')
 
     const json = await res.json()
@@ -41,12 +43,12 @@ const handler = async (m, { conn, usedPrefix}) => {
       `✩ *Stars*: ${json.stargazers_count}\n\n` +
       `> *Dev-gabriel*`
 
-    const catalogo = { url: 'https://cdn.yupra.my.id/yp/6sw4yju9.jpg'} // ✅ imagen.jpg
+    const catalogo = { url: 'https://cdn.yupra.my.id/yp/6sw4yju9.jpg'}
 
     await conn.sendMessage(m.chat, {
       image: catalogo,
       caption: txt,
-...global.rcanal
+...(global.rcanal || {})
 }, { quoted: qkontak})
 
     await m.react('✔️')
@@ -55,7 +57,7 @@ const handler = async (m, { conn, usedPrefix}) => {
     await m.react('✖️')
     await conn.sendMessage(m.chat, {
       text: `⚠︎ Se ha producido un problema.\n> Usa *${usedPrefix}report* para informarlo.\n\n${err.message}`,
-...global.rcanal
+...(global.rcanal || {})
 }, { quoted: m})
 }
 }
