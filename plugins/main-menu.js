@@ -25,7 +25,7 @@ let handler = async (m, { conn}) => {
 > *_SI ENCUENTRAS ALGÚNA. FALLA DEL BOT COMUNICATE CON .OWNER ISAGI-YOICHI._*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  INFO ⊹
-> ✐ Comandos del menu  general.
+> ✐ Comandos del menu  general de Isagi.
 
 ┃➪Aqui te  Muestro el menú completo del bot 
 ✦ *#menu* • *#help*
