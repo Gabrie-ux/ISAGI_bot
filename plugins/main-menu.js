@@ -27,23 +27,23 @@ let handler = async (m, { conn}) => {
 »  ⊹ ˚୨ •(=^●ω●^=)•  INFO ⊹
 > ✐ Comandos del menu  general.
 
-┃➪ Muestra el menú completo del bot 
+┃➪Aqui te  Muestro el menú completo del bot 
 ✦ *#menu* • *#help*
-┃➪ Información y contacto del creador 
-✦ *#owner*
-┃➪ Verifica si el bot está activo 
+┃
+✦*#owner*
+┃
 ✦ *#ping*
-┃➪ Obtén el script del bot 
+┃
 ✦ *#script*
-┃➪ Muestra usuarios registrados 
+┃➪ 
 ✦ *#registros*
-┃➪ Lista registros globales 
+┃➪ 
 ✦ *#listarg*
-┃➪ Elimina tu registro del bot 
+┃➪ 
 ✦ *#unreg*
-┃➪ Elimina los registros
+┃➪ 
 ✦ *#limpiar*
-┃➪ Regístrate como usuario 
+┃➪ 
 ✦ *#reg*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  ANIME ⊹
@@ -77,41 +77,41 @@ let handler = async (m, { conn}) => {
 »  ⊹ ˚୨ •(=^●ω●^=)•  BUSCADOR ⊹
 > ✐ Encuentra contenido fácilmente.
 
-┃➪ Busca imágenes en Pinterest 
+┃
 ✦ *#pinterest* <texto>
-┃➪ Busca videos en TikTok 
+┃
 ✦ *#tiktoksearch* <texto>
-┃➪ Busca videos en YouTube 
+┃
 ✦ *#ytsearch* <texto>
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  DOWNLOAD ⊹
 > ✐ Descarga contenido de redes sociales.
 
-┃➪ Descarga archivos APK 
-✦ *#apk*
-┃➪ Descarga desde Facebook 
+┃
+✦ *#apk* (texto)
+┃
 ✦ *#facebook* <url>
-┃➪ Descarga desde Instagram 
+┃
 ✦ *#instagram* <url>
-┃➪ Descarga desde Pinterest 
+|
 ✦ *#pindl* <url>
-┃➪ Busca y reproduce música 
+┃
 ✦ *#play* <texto>
-┃➪ Descarga audio de YouTube 
+┃
 ✦ *#yta* <url>
-┃➪ Convierte video a MP3 
+┃
 ✦ *#ytmp3* <url>
-┃➪ Alternativa para reproducir música 
+┃
 ✦ *#play2* <texto>
-┃➪ Descarga video de YouTube 
+┃
 ✦ *#ytv* <url>
-┃➪ Convierte video a MP4 
+┃
 ✦ *#ytmp4* <url>
-┃➪ Reproduce audio directamente 
+┃
 ✦ *#playaudio* <texto>
-┃➪ Descarga en formato MP4 
+┃
 ✦ *#mp4* <url>
-┃➪ Descarga desde TikTok 
+┃
 ✦ *#tiktok* <url>
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  FUN ⊹
@@ -121,7 +121,7 @@ let handler = async (m, { conn}) => {
 ✦ *#doxear*
 ┃➪ Doxeo personalizado 
 ✦ *#doxxing* <nombre> | <@mención>
-┃➪ Forma parejas aleatorias 
+┃
 ✦ *#formarpareja*
 ┃➪ Crea parejas múltiples 
 ✦ *#formarpareja5*
@@ -185,7 +185,7 @@ let handler = async (m, { conn}) => {
 ✦ *#code*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  OWNER ⊹
-> ✐ Comandos exclusivos para el owner.
+> ✐ Comandos exclusivos para el owner de isagi.
 
 ┃➪ Activa funciones del bot 
 ✦ *#enable* <opción>
