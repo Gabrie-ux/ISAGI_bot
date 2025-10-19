@@ -202,8 +202,8 @@ async function getRandomChannel() {
 }
 
   global.icono = [
-    'https://cdn.yupra.my.id/yp/962jca9m.jpg',
-    'https://cdn.yupra.my.id/yp/ykhrquj7.jpg'
+    'https://files.catbox.moe/jzg4up.jpg',
+    'https://files.catbox.moe/0bvven.jpg'
   ].getRandom()
 
   global.rcanal = {
