@@ -15,25 +15,25 @@ const handler = async (m, { conn, command, usedPrefix, participants}) => {
 ? '> ɴᴏ ᴘᴜᴇᴅᴏ ᴍᴏꜱᴛʀᴀʀ ʟᴀ ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ.'
 : `🤖 ꜱᴜʙ-ʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ: *${subBotsCount}*`
 
-    const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs 」*
+    const message = `*「 ʟɪsᴛᴀ ᴅᴇ ʙᴏᴛs ᴀᴄᴛɪᴠᴏs en isagi Yoichi 👻 」*
 
 ⚽ ʙᴏᴛ ᴘʀɪɴᴄɪᴘᴀʟ: *1*
 
 ❏ ʙᴏᴛꜱ ᴇɴ ᴇꜱᴛᴇ ɢʀᴜᴘᴏ: *${botsInGroup.length}*
 ${subBotDisplay}
 
-> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴏᴏɴғʀᴀʀᴇ ᴛᴇᴀᴍ ☽`
+> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ isagi☽`
 
     await conn.sendMessage(m.chat, {
       text: message,
       contextInfo: {
         externalAdReply: {
-          title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
+          title: '© isagɪ-ʙᴏᴛᴠ𝟷',
           body: 'ʟɪsᴛᴀ ᴅᴇ ꜱᴜʙʙᴏᴛꜱ ᴀᴄᴛɪᴠᴏꜱ',
-          thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
+          thumbnailUrl: 'https://cdn.yupra.my.id/yp/2n8vbvel.png',
           mediaType: 1,
           renderLargerThumbnail: true,
-          sourceUrl: 'https://github.com/hashirama-dev'
+          sourceUrl: 'https://github.com/gabrie-ux'
 }
 }
 }, { quoted: m})
