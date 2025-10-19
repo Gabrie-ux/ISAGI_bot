@@ -27,7 +27,7 @@ let handler = async (m, { conn}) => {
 »  ⊹ ˚୨ •(=^●ω●^=)•  INFO ⊹
 > ✐ Comandos del menu  general de Isagi.
 
-┃➪Aqui te  Muestro el menú completo del bot 
+┃➪> ✐ aquí te muestro el menu general de isagi Yoichi revolución 🦅
 ✦ *#menu* • *#help*
 ┃
 ✦*#owner*
