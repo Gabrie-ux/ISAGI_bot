@@ -13,7 +13,7 @@ let handler = async (m, { conn}) => {
   const userId = m.mentionedJid?.[0] || m.sender
 
   const txt = `︶•︶°︶•︶°︶•︶°︶•︶°︶•︶°︶
-> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ISAGI-BOT, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ
+> ʜᴏʟᴀ, @${m.sender.split('@')[0]}, ꜱᴏʏ ISAGI-BOT, ʟɪꜱᴛᴏ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ en esta aventura 🦅
 ╭┈ ↷
 │ ✐ 𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-gabriel 🇵🇪👻
 │ ✐ ꒷ꕤ💎ദ ɢʀᴜᴘᴏ ᴏꜰɪᴄɪᴀʟ ꕥ
@@ -25,7 +25,7 @@ let handler = async (m, { conn}) => {
 > *_SI ENCUENTRAS ALGÚNA. FALLA DEL BOT COMUNICATE CON .OWNER ISAGI-YOICHI._*
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  INFO ⊹
-> ✐ Comandos del menu  general de Isagi.
+> ✐ Comandos del menu  general de Isagi recuerda que todavía está en desarrollo:3.
 
 > ✐ aquí te muestro el menu general de isagi Yoichi revolución. 🦅
 ✦ *#menu* • *#help*
