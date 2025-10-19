@@ -24,9 +24,9 @@ const handler = async (m, { conn, command}) => {
       text,
       contextInfo: {
         externalAdReply: {
-          title: '© ɴᴀɢɪ-ʙᴏᴛᴠ𝟷',
+          title: '© isagi-ʙᴏᴛᴠ𝟷',
           body: 'ʟɪꜱᴛᴀ ᴅᴇ ᴜꜱᴜᴀʀɪᴏꜱ ʀᴇɢɪꜱᴛʀᴀᴅᴏꜱ',
-          thumbnailUrl: 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg',
+          thumbnailUrl: 'https://cdn.yupra.my.id/yp/h6q75pcd.jpg',
           mediaType: 1,
           renderLargerThumbnail: true,
           sourceUrl: 'https://github.com/hashirama-dev'
