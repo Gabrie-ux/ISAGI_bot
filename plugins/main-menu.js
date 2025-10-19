@@ -131,6 +131,8 @@ let handler = async (m, { conn}) => {
 ✦ *#chaqueta*
 ┃➪ Crea un ranking personalizado 
 ✦ *#top* <texto>
+   escoje a usuarios ala azar 👻
+   *ruletaban 
 
 »  ⊹ ˚୨ •(=^●ω●^=)•  GRUPO ⊹
 > ✐ Comandos para administrar el grupo.
