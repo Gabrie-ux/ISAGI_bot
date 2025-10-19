@@ -11,7 +11,7 @@ const handler = async (event, { conn}) => {
       const groupName = groupMetadata.subject
       const memberCount = groupMetadata.participants.length
       const avatar = 'https://i.ibb.co/1s8T3sY/48f7ce63c7aa.jpg'
-      const background = 'https://cdn.yupra.my.id/yp/dpi4ktu8.jpg'
+      const background = 'https://cdn.yupra.my.id/yp/2n8vbvel.png'
       const guildIcon = 'https://github.com/Neveloopp.png'
       const apiKey = 'Dev-fedexyz'
 
@@ -21,7 +21,7 @@ const handler = async (event, { conn}) => {
       if (!res.ok) throw new Error('No se pudo generar la imagen de bienvenida.')
       const buffer = await res.buffer()
 
-      const caption = `👋 ʜᴏʟᴀ @${username}\n✨ ʙɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ɢʀᴜᴘᴏ *${groupName}* ✨\nꜱᴏʏ ɴᴀɢɪ-ʙᴏᴛ, ᴇꜱᴛᴏʏ ᴀQᴜɪ́ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ 💎`
+      const caption = `👋 ʜᴏʟᴀ @${username}\n✨ ʙɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ɢʀᴜᴘᴏ *${groupName}* ✨\nꜱᴏʏ isagi-ʙᴏᴛ, ᴇꜱᴛᴏʏ ᴀQᴜɪ́ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ en cualquier cosa👻`
 
       await conn.sendMessage(id, {
         image: buffer,
