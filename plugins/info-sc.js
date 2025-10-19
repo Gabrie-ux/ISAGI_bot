@@ -43,7 +43,8 @@ const handler = async (m, { conn, usedPrefix}) => {
       `✩ *Stars*: ${json.stargazers_count}\n\n` +
       `> *Dev-gabriel*`
 
-    const catalogo = { url: 'https://cdn.yupra.my.id/yp/6sw4yju9.jpg'}
+    const catalogo = { url: '.
+'https://cdn.yupra.my.id/yp/h6q75pcd.jpg'}
 
     await conn.sendMessage(m.chat, {
       image: catalogo,
