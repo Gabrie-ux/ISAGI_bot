@@ -1,38 +1,81 @@
-import fetch from 'node-fetch'
+// welcome-control.js
+/**
+ * 🎀 CREADO POR: LeoXzzsy
+ * 🌸 ADAPTADO PARA: Itsuki-Nakano IA
+ * 📚 VERSIÓN: 3.4.0 Beta
+ * 🏷️ SISTEMA DE CONTROL WELCOME
+ */
 
-const handler = async (event, { conn}) => {
-  const { participants, action, id} = event
-  if (action!== 'add') return
+let handler = async (m, { conn, usedPrefix, command, isAdmin, isBotAdmin }) => {
+  const ctxErr = (global.rcanalx || {})
+  const ctxWarn = (global.rcanalw || {})
+  const ctxOk = (global.rcanalr || {})
 
-  for (const user of participants) {
-    try {
-      const username = user.split('@')[0]
-      const groupMetadata = await conn.groupMetadata(id)
-      const groupName = groupMetadata.subject
-      const memberCount = groupMetadata.participants.length
-      const avatar = 'https://i.ibb.co/1s8T3sY/48f7ce63c7aa.jpg'
-      const background = 'https://cdn.yupra.my.id/yp/2n8vbvel.png'
-      const guildIcon = 'https://github.com/Neveloopp.png'
-      const apiKey = 'Dev-fedexyz'
+  if (!m.isGroup) return conn.reply(m.chat, '❌ Este comando solo funciona en grupos', m, ctxErr)
+  if (!isAdmin) return conn.reply(m.chat, '❌ Solo los administradores pueden usar este comando', m, ctxErr)
 
-      const apiUrl = `https://api-nv.eliasaryt.pro/api/generate/welcome-image?username=${encodeURIComponent(username)}&guildName=${encodeURIComponent(groupName)}&memberCount=${memberCount}&avatar=${encodeURIComponent(avatar)}&background=${encodeURIComponent(background)}&guildIcon=${encodeURIComponent(guildIcon)}&key=${apiKey}`
+  const action = (m.text || '').toLowerCase().split(' ')[1]
+  const jid = m.chat
 
-      const res = await fetch(apiUrl)
-      if (!res.ok) throw new Error('No se pudo generar la imagen de bienvenida.')
-      const buffer = await res.buffer()
+  try {
+    // Importar desde lib/welcome.js
+    const { setWelcomeState, isWelcomeEnabled } = await import('../lib/welcome.js')
 
-      const caption = `👋 ʜᴏʟᴀ @${username}\n✨ ʙɪᴇɴᴠᴇɴɪᴅᴏ ᴀʟ ɢʀᴜᴘᴏ *${groupName}* ✨\nꜱᴏʏ isagi-ʙᴏᴛ, ᴇꜱᴛᴏʏ ᴀQᴜɪ́ ᴘᴀʀᴀ ᴀʏᴜᴅᴀʀᴛᴇ en cualquier cosa👻`
-
-      await conn.sendMessage(id, {
-        image: buffer,
-        caption,
-        mentions: [user]
-})
-
-} catch (error) {
-      console.error(`Error en welcome.js: ${error.message}`)
+    if (action === 'on' || action === 'activar') {
+      setWelcomeState(jid, true)
+      return conn.reply(m.chat, 
+        `✅ *Welcome activado*\n\n` +
+        `Ahora se enviarán mensajes de bienvenida y despedida en este grupo\n\n` +
+        `🎀 *Itsuki-Nakano IA v3.4.0 Beta*\n` +
+        `╰ Creado por: LeoXzzsy`, 
+      m, ctxOk)
+    } 
+    else if (action === 'off' || action === 'desactivar') {
+      setWelcomeState(jid, false)
+      return conn.reply(m.chat, 
+        `❌ *Welcome desactivado*\n\n` +
+        `Ya no se enviarán mensajes de bienvenida y despedida en este grupo\n\n` +
+        `🎀 *Itsuki-Nakano IA v3.4.0 Beta*\n` +
+        `╰ Creado por: LeoXzzsy`, 
+      m, ctxErr)
+    }
+    else if (action === 'status' || action === 'estado') {
+      const status = isWelcomeEnabled(jid) ? '🟢 ACTIVADO' : '🔴 DESACTIVADO'
+      return conn.reply(m.chat, 
+        `📊 *Estado del Welcome*\n\n` +
+        `Estado actual: ${status}\n\n` +
+        `Usa:\n` +
+        `*${usedPrefix}welcome on* - Para activar\n` +
+        `*${usedPrefix}welcome off* - Para desactivar\n\n` +
+        `🎀 *Itsuki-Nakano IA v3.4.0 Beta*\n` +
+        `╰ Creado por: LeoXzzsy`, 
+      m, ctxWarn)
+    }
+    else {
+      return conn.reply(m.chat, 
+        `🏷 *Configuración del Welcome*\n\n` +
+        `Usa:\n` +
+        `*${usedPrefix}welcome on* - Activar welcome\n` +
+        `*${usedPrefix}welcome off* - Desactivar welcome\n` +
+        `*${usedPrefix}welcome status* - Ver estado actual\n\n` +
+        `🎀 *Itsuki-Nakano IA v3.4.0 Beta*\n` +
+        `╰ Creado por: LeoXzzsy`, 
+      m, ctxWarn)
+    }
+  } catch (importError) {
+    console.error('Error importing from lib/welcome.js:', importError)
+    return conn.reply(m.chat, 
+      `❌ Error: No se pudo cargar el sistema de welcome\n\n` +
+      `🎀 *Itsuki-Nakano IA v3.4.0 Beta*\n` +
+      `╰ Creado por: LeoXzzsy`, 
+    m, ctxErr)
+  }
 }
-}
-}
+
+handler.help = ['welcome']
+handler.tags = ['group']
+handler.command = ['welcome']
+handler.admin = true
+handler.group = true
 
 export default handler
