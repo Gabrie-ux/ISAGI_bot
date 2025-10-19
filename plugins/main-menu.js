@@ -17,7 +17,7 @@ let handler = async (m, { conn}) => {
 ╭┈ ↷
 │ ✐ 𝓓𝓮𝔀𝓮𝓵𝓸𝓹𝓮𝓭 𝓫𝔂 𝑫𝒆𝒗-gabriel 🇵🇪👻
 │ ✐ ꒷ꕤ💎ദ ɢʀᴜᴘᴏ ᴏꜰɪᴄɪᴀʟ ꕥ
-│ chat.whatsapp.com/F1A3vMyQLnh0LAnJvpdjng
+│https://chat.whatsapp.com/Lcm0r7VVVMDAfPF31bmiH9?mode=wwc
 │ ✐ ꒷ꕤ💎ദ ᴄᴀɴᴀʟ ᴏғɪᴄɪᴀʟ ෴
 │https://whatsapp.com/channel/0029Vb6nOKBD8SDp0aFtCD3R
 ╰─────────────────
